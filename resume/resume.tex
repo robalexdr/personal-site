@@ -1,0 +1,210 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+% \input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+% \pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      {\small#3} & {\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      {\small#1} & {\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    \textbf{\Huge \scshape Robert Alexander} \\ \vspace{1pt}
+    \small 310-483-4191 $|$ \href{mailto:robalexdr@gmail.com}{\underline{robalexdr@gmail.com}} $|$
+    \href{https://linkedin.com/in/robalexdr}{\underline{linkedin.com/in/robalexdr}} $|$
+    \href{https://github.com/robalexdr}{\underline{github.com/robalexdr}}
+\end{center}
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Independent}{Jan. 2025 -- Present}
+      {Software Engineer}{}
+      \resumeItemListStart
+        \resumeItem{Building Dishcraft, a full-stack recipe platform with cloud-native infrastructure, normalized data modeling, AI-assisted recipe generation, and personalized recommendation pipelines}
+        \resumeItem{Building Quandary, an extensible AI learning platform centered on note-based knowledge management, semantic retrieval, active recall, and configurable learning workflows}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Apkudo}{Sep. 2022 -- Nov. 2024}
+      {Senior Software Engineer}{}
+      \resumeItemListStart
+        \resumeItem{Led engineering for a greenfield, IoT-enabled retail device-logistics platform used to track smartphone shipments for a major telecommunications provider}
+        \resumeItem{Developed station software, APIs, and operational workflows supporting device intake, processing, and shipment tracking}
+        \resumeItem{Partnered with client managers to define requirements and deliver workflow improvements}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Actium Health}{Jul. 2021 -- Jul. 2022}
+      {Software Engineer}{Irvine, CA}
+      \resumeItemListStart
+        \resumeItem{Built batch and streaming medical-data ingestion pipelines using Python, AWS, MySQL, and Kafka}
+        \resumeItem{Developed GraphQL APIs and data-access layers with SQLAlchemy}
+        \resumeItem{Built frontend components and pages with React and TypeScript, with Jest-based unit testing}
+        \resumeItem{Served as scrum master, facilitating sprint planning, standups, retrospectives, and backlog refinement}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------ADDITIONAL EXPERIENCE-----------
+\section{Additional Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Sense Corp \textnormal{--- Technical Consultant}}{Nov. 2020 -- Feb. 2021}
+      {Data science and engineering consulting}{Austin, TX}
+
+    \resumeSubheading
+      {UCI CS Department \textnormal{--- Graduate Teaching Assistant}}{Sep. 2018 -- June 2020}
+      {Taught discrete math, Python, algorithms, and database courses}{Irvine, CA}
+
+    \resumeSubheading
+      {AppDynamics \textnormal{--- Data Engineer}}{Jan. 2018 -- Oct. 2018}
+      {Built Python ETL pipelines and Snowflake data warehouse workflows}{San Francisco, CA}
+
+    \resumeSubheading
+      {PLAYSTUDIOS \textnormal{--- Data Engineer}}{Aug. 2017 -- Dec. 2017}
+      {Developed Snowflake data warehouse and Talend data integration pipelines}{Burlingame, CA}
+
+    \resumeSubheading
+      {REAL Software Systems \textnormal{--- Database Developer}}{Mar. 2016 -- May 2017}
+      {Automated SQL Server operations and data workflows using T-SQL and PowerShell}{Woodland Hills, CA}
+
+  \resumeSubHeadingListEnd
+
+
+%-----------EDUCATION-----------
+\section{Education}
+    \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of California, Irvine}{Irvine, CA}
+      {M.S. Computer Science}{Sept. 2018 -- June 2020}
+    \resumeSubheading
+      {University of California, Los Angeles}{Los Angeles, CA}
+      {B.S. Computational Math}{Sept. 2011 -- June 2015}
+  \resumeSubHeadingListEnd
+
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: TypeScript, SQL, Python} \\
+     \textbf{Backend \& Data}{: Postgres, Prisma, Fastify, Express, Node.js, Snowflake, SQL Server } \\
+     \textbf{Testing}{: Vitest, Node.js Test Runner, pytest, Jest} \\
+     \textbf{Developer Tools}{: Git, Docker} \\
+     \textbf{Cloud \& DevOps}{: AWS, AWS CDK, ECS, Fargate, ECR, RDS, CloudWatch, Cognito, GitHub Actions} \\
+    }}
+ \end{itemize}
+
+
+%-------------------------------------------
+\end{document}
