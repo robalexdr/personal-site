@@ -1,0 +1,12 @@
+[
+  {
+    "slug": "dishcraft",
+    "name": "Dishcraft",
+    "description": "A full-stack recipe platform with cloud-native infrastructure."
+  },
+  {
+    "slug": "quandary",
+    "name": "Quandary",
+    "description": "An AI-assisted learning platform for note-centric knowledge management."
+  }
+]

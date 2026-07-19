@@ -1,9 +1,21 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BlogPost } from './components/BlogPost.tsx'
+import { Home } from './components/Home.tsx'
+import { NotFound } from './components/NotFound.tsx'
+import { Project } from './components/Project.tsx'
+import { ProjectBlog } from './components/ProjectBlog.tsx'
+
 function App() {
   return (
-    <main className="site">
-      <h1>Robert Alexander</h1>
-      <a href="/resume.pdf">Resume</a>
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects/:project/" element={<Project />} />
+        <Route path="/projects/:project/blog/" element={<ProjectBlog />} />
+        <Route path="/projects/:project/blog/:slug/" element={<BlogPost />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
