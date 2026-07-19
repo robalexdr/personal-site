@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { displayProjectName, getPost } from '../blog/posts.ts'
+import { SiteHeader } from './SiteHeader.tsx'
 
 export function BlogPost() {
   const { project, slug } = useParams()
@@ -11,15 +12,16 @@ export function BlogPost() {
   }
 
   return (
-    <main className="site">
-      <p>
-        <Link to={`/projects/${project}/blog/`}>
-          Back to {displayProjectName(project)} blog
+    <div className="site">
+      <SiteHeader />
+      <main className="page article-page">
+        <Link className="back-link" to={`/projects/${project}/`}>
+          ← Back to {displayProjectName(project)}
         </Link>
-      </p>
-      <article>
-        <ReactMarkdown>{post.content}</ReactMarkdown>
-      </article>
-    </main>
+        <article className="prose">
+          <ReactMarkdown>{post.content}</ReactMarkdown>
+        </article>
+      </main>
+    </div>
   )
 }

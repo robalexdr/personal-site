@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { getPostsForProject, getProject } from '../blog/posts.ts'
+import { SiteHeader } from './SiteHeader.tsx'
 
 export function Project() {
   const { project: projectSlug } = useParams()
@@ -12,29 +13,32 @@ export function Project() {
   const posts = getPostsForProject(project.slug)
 
   return (
-    <main className="site">
-      <p>
-        <Link to="/">Robert Alexander</Link>
-      </p>
+    <div className="site">
+      <SiteHeader />
+      <main className="page">
+      <p className="eyebrow">Project</p>
       <h1>{project.name}</h1>
-      <p>{project.description}</p>
+      <p className="lede">{project.description}</p>
 
-      <section>
+      <section className="section">
         <h2>Blog</h2>
         {posts.length > 0 ? (
-          <ul>
+          <div className="post-list">
             {posts.map((post) => (
-              <li key={post.slug}>
-                <Link to={`/projects/${project.slug}/blog/${post.slug}/`}>
+              <Link className="post-card" key={post.slug} to={`/projects/${project.slug}/blog/${post.slug}/`}>
+                <span className="card-kicker">Article</span>
+                <h3>
                   {post.title}
-                </Link>
-              </li>
+                </h3>
+                <span className="card-link">Read article <span aria-hidden="true">→</span></span>
+              </Link>
             ))}
-          </ul>
+          </div>
         ) : (
-          <p>No blog posts yet.</p>
+          <p className="muted">No blog posts yet.</p>
         )}
       </section>
-    </main>
+      </main>
+    </div>
   )
 }

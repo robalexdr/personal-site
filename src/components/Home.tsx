@@ -1,23 +1,28 @@
 import { Link } from 'react-router-dom'
 import { projects } from '../blog/posts.ts'
+import { SiteHeader } from './SiteHeader.tsx'
 
 export function Home() {
   return (
-    <main className="site">
-      <h1>Robert Alexander</h1>
-      <p>
-        <a href="/resume.pdf">Resume</a>
-      </p>
-      <section>
+    <div className="site">
+      <SiteHeader />
+      <main className="page">
+        <p className="eyebrow">Software engineer</p>
+        <h1 className="hero-title">Selected works</h1>
+      <section className="section">
         <h2>Projects</h2>
-        <ul>
+        <div className="project-grid">
           {projects.map((project) => (
-            <li key={project.slug}>
-              <Link to={`/projects/${project.slug}/`}>{project.name}</Link>
-            </li>
+            <Link className="project-card" key={project.slug} to={`/projects/${project.slug}/`}>
+              <span className="card-kicker">Project</span>
+              <h3>{project.name}</h3>
+              <p>{project.description}</p>
+              <span className="card-link">View project <span aria-hidden="true">→</span></span>
+            </Link>
           ))}
-        </ul>
+        </div>
       </section>
-    </main>
+      </main>
+    </div>
   )
 }
