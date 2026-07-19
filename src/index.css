@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  color: #111827;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+.site {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+h1 {
+  margin: 0 0 1rem;
+  font-size: 2.5rem;
+}
