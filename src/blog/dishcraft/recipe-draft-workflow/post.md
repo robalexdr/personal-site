@@ -63,80 +63,35 @@ Both operations use the same persistence path after their content has been prepa
 
 In the current product UI, an “Apply Edit” action is implemented through prompt generation: the user describes the change and the language-model workflow produces the next draft. The lower-level edit endpoint also exists for directly submitting complete content.
 
+#### How the language model is used
+
+Prompt generation is split into two language-model stages:
+
+![LLM-assisted recipe draft workflow showing planning, refusal or acceptance, generation, schema validation, and persistence as a new draft.](llm-draft-workflow.png)
+
+*The language-model stages prepare a new draft; they do not mutate a saved recipe directly.*
+
+The planner acts as a gatekeeper and editor. It decides whether the request is appropriate, identifies conflicts or unsupported changes, and translates the user's intent into explicit operations. Because this stage is focused on classification and structured planning, it can use a simpler, faster, and less expensive model than the generation stage.
+
+The generator acts as the recipe author. It receives the source recipe, the user's prompt, and the accepted plan, then produces the revised recipe along with a structured summary of the changes. Its job requires more detailed language and recipe reasoning than the planning stage.
+
+Both stages return structured data, and the application validates the generated recipe independently before storing it. If the planner refuses the request, either model fails, or the generated content does not match the recipe schema, no new draft is persisted. The language model never mutates a saved recipe directly; a successful result becomes a new draft for the user to review.
+
 ### 3. The user continues the chain
 
 When the source is another draft, the new draft copies the source draft's lineage and source recipe information. Its `sourceDraftId` points to the draft it was based on.
 
-For example:
-
-```text
-Draft A
-  lineageId: L1
-  sourceRecipeId: null
-  sourceDraftId: null
-
-Draft B
-  lineageId: L1
-  sourceRecipeId: null
-  sourceDraftId: Draft A
-```
-
-The same pattern applies to a recipe-derived chain, except that `sourceRecipeId` remains set to the original recipe:
-
-```text
-Recipe R
-    |
-    v
-Draft A
-  lineageId: L2
-  sourceRecipeId: R
-  sourceDraftId: null
-    |
-    v
-Draft B
-  lineageId: L2
-  sourceRecipeId: R
-  sourceDraftId: Draft A
-```
+The same pattern applies when the first draft is derived from an existing recipe: `sourceRecipeId` identifies that recipe, while later drafts continue the same lineage and point to the immediately previous draft.
 
 ## How lineages work
 
 A lineage is the identity of one continuous draft sequence. It is not the identity of a recipe, a user, or a single prompt. It answers the question: “Which drafts belong to this editing history?”
 
-The implementation uses three fields together:
+The implementation uses three fields to connect that history: `lineageId` groups the sequence, `sourceDraftId` points to the immediate previous draft, and `sourceRecipeId` preserves the source recipe when the lineage began from one.
 
-| Field | Meaning |
-| --- | --- |
-| `lineageId` | Groups every draft in one sequence. |
-| `sourceDraftId` | Points to the immediate previous draft. |
-| `sourceRecipeId` | Identifies the recipe from which the sequence ultimately originated, when there is one. |
+![Example of a recipe draft lineage showing complete snapshots, recipe changes, lineage metadata, and normalization into a durable recipe.](lineage-example.png)
 
-These fields separate two related ideas:
-
-- `lineageId` tells us which history a draft belongs to.
-- `sourceDraftId` tells us the exact previous version.
-
-That makes the history both easy to group and easy to traverse. A query can find every draft in a lineage, while the parent pointer preserves the exact sequence that led to the selected draft.
-
-### Original lineages
-
-An original lineage starts without a recipe:
-
-```text
-Draft 1 -> Draft 2 -> Draft 3
-```
-
-Every draft has the same `lineageId`, each later draft points to the previous draft, and `sourceRecipeId` remains `null`. If Draft 3 is normalized, the resulting recipe is marked as created from an original draft path.
-
-### Recipe-derived lineages
-
-A derived lineage starts from an existing recipe:
-
-```text
-Recipe A -> Draft 1 -> Draft 2 -> Recipe B
-```
-
-`sourceRecipeId` is set to Recipe A on every draft in the chain, while `sourceDraftId` records the local step-by-step history. If Draft 2 is normalized, the resulting Recipe B is marked as derived and keeps a direct reference to Draft 2 through `createdFromRecipeDraftId`.
+*The example shows a recipe-derived chain: each draft is a complete snapshot, while the metadata records the lineage and immediate source relationships.*
 
 ### The current chain constraint
 

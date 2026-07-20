@@ -196,7 +196,7 @@ h3 {
 }
 
 .prose {
-  max-width: 46rem;
+  max-width: 60rem;
   color: #374151;
   font-size: 1.05rem;
   line-height: 1.8;
@@ -226,12 +226,81 @@ h3 {
 
 .prose img {
   display: block;
-  max-width: 100%;
+  width: 100%;
+  max-width: 60rem;
   height: auto;
   margin: 2rem 0;
   border: 1px solid #e1e5ed;
   border-radius: 0.75rem;
   box-shadow: 0 0.75rem 2rem rgb(31 41 55 / 8%);
+}
+
+.image-button {
+  display: block;
+  width: 100%;
+  margin: 2rem 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+  text-align: left;
+}
+
+.image-button img {
+  margin: 0;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.image-button:hover img {
+  transform: scale(1.01);
+  box-shadow: 0 1rem 2.5rem rgb(31 41 55 / 14%);
+}
+
+.image-lightbox {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: rgb(17 24 39 / 82%);
+  cursor: zoom-out;
+}
+
+.image-lightbox img {
+  width: auto;
+  max-width: 96vw;
+  max-height: 92vh;
+  object-fit: contain;
+  border: 0;
+  box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 35%);
+}
+
+.prose table {
+  width: 100%;
+  margin: 2rem 0;
+  border: 1px solid #cfd5df;
+  border-spacing: 0;
+  border-radius: 0.75rem;
+  background: #fff;
+  overflow: hidden;
+}
+
+.prose th,
+.prose td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.prose th {
+  background: #eef0f5;
+  color: #172033;
+  font-size: 0.9rem;
+}
+
+.prose tr:last-child td {
+  border-bottom: 0;
 }
 
 .prose blockquote {
