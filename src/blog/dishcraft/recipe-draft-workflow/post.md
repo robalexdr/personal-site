@@ -1,4 +1,4 @@
-# From Draft to Recipe: How Dishcraft Tracks Lineage
+# Tracking Recipe Lineage
 
 Dishcraft treats recipe creation as a two-stage process. A user first works with a flexible draft, then chooses whether to turn that draft into a durable, normalized recipe.
 

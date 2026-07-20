@@ -1,4 +1,4 @@
-# Dishcraft: A Product Overview
+# Overview
 
 ## 1. What Is Dishcraft?
 
@@ -50,6 +50,10 @@ The experience is deliberately incremental. A user does not have to customize a 
 
 The “For You” experience uses a recommendation system to rank recipes for a particular user. Its purpose is to make the recipe catalog feel smaller and more relevant without requiring the user to search manually every time.
 
+![Dishcraft recipe browsing screen showing personalized recommendations and recipe discovery by tag.](recipe-browsing.png)
+
+*The product combines personalized recommendations with direct tag-based browsing.*
+
 Recommendations are informed by recipe attributes and user preference signals. The system can represent characteristics of recipes and learn which of those characteristics a user tends to prefer. Explicit signals, such as favorites, ratings, and cooking activity, provide stronger evidence than a single page view or an isolated click.
 
 The recommendation experience is also designed to support evaluation. Rather than treating a recommendation model as successful simply because it produces a list, Dishcraft can test how different ranking approaches behave for simulated user profiles and interaction histories. That makes it possible to ask more meaningful questions:
@@ -63,41 +67,27 @@ This turns personalization into an iterative product capability. The system is n
 
 The recommendation goal, baseline, ML approach, and evaluation process are described in more detail in [How Dishcraft Recommends Recipes](../recipe-recommendations/).
 
-## 5. LLM-Powered Recipe Customization
+## 5. From Recipe Prompt to Saved Recipe
 
 Recipe customization is initiated with a natural-language prompt. Instead of requiring the user to edit every ingredient and instruction manually, Dishcraft lets them describe the outcome they want.
 
-For example, a user might ask to:
+![Dishcraft recipe editing screen showing a request to turn skirt steak street tacos into a rice bowl.](edit-request-tacos.png)
 
-- replace an ingredient;
-- make a recipe vegetarian;
-- use a different piece of equipment;
-- reduce preparation complexity; or
-- change the flavor profile.
+*A user can describe the desired change without manually editing every recipe field.*
 
-The generation workflow has two important stages. First, a planning step determines whether the request is appropriate and what changes it calls for. Then a generation step produces revised recipe content. The result is validated against a structured recipe-content schema before it is shown as a draft.
+The system plans the requested change, generates revised recipe content, and validates the result before showing it as a draft. This gives the user a reviewable version rather than immediately replacing the saved recipe.
 
-This separation provides more control than sending the original recipe and user prompt directly to a single generation call. It creates a place to reject unsupported requests, make the intended change explicit, and verify that the generated result still has the expected recipe structure.
+![Dishcraft recipe result showing the generated skirt steak rice bowl.](edit-result.png)
 
-The user sees the result as a draft, not as an immediate replacement for the original recipe. That distinction gives them a chance to review the name, ingredients, equipment, steps, and tags before deciding whether the result is worth keeping.
-
-The draft model behind this workflow is described in more detail in the [recipe draft workflow](../recipe-draft-workflow/).
-
-## 6. From Draft to Saved Recipe
-
-The draft experience is the bridge between experimentation and durable product data.
+*The generated result is presented for review before the user decides whether to save it.*
 
 Each generated revision is stored as a new draft with a complete snapshot of its recipe content. When a user asks for another change, the next draft points back to the previous one. This creates a lineage: a record of how the recipe evolved from its source to the version the user ultimately selected.
 
-A draft can begin from an existing recipe, continue from another draft, or start as an original recipe. Drafts that begin from an existing recipe retain that origin as they move through the editing sequence. Drafts created from scratch have no source recipe, but they still form their own sequence through the same lineage mechanism.
+When the user selects “Save Recipe,” the current draft is normalized into a durable recipe with its provenance preserved. A saved recipe can also become the starting point for future customization without changing the saved version.
 
-When the user selects “Save Recipe,” the current draft is normalized into a durable recipe. The flexible JSON content is converted into structured recipe records for ingredients, units, equipment, and tags. The new recipe also retains provenance: it records which draft produced it and whether the draft was original or derived from another recipe.
+The full draft, lineage, and normalization workflow is described in the [recipe draft workflow](../recipe-draft-workflow/).
 
-A saved recipe can also become the starting point for future customization. A later edit creates a new draft lineage derived from that recipe, leaving the saved recipe unchanged while giving the user another path to explore.
-
-This boundary keeps the main recipe catalog clean. Intermediate experiments remain available as draft history, while only the version the user chooses becomes a normal recipe that can be browsed, favorited, cooked, rated, and recommended.
-
-## 7. The Product and Engineering Decisions Behind It
+## 6. The Product and Engineering Decisions Behind It
 
 Several design decisions shape the product experience.
 

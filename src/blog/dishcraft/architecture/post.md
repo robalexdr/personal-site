@@ -1,8 +1,8 @@
-# Dishcraft Architecture: From Product Boundaries to Deployment
+# Architecture
 
-Dishcraft is a full-stack application with a deliberately explicit set of boundaries. The web application provides the user experience, the API owns most interactive product behavior, PostgreSQL stores durable state, and analytics runs recommendation workloads outside the request path.
+Dishcraft is a recipe application for discovering, adapting, and saving recipes. Users can find recipes through personalized recommendations, request changes in natural language, review successive drafts, and save the version they want to keep.
 
-The system is organized as a TypeScript monorepo with a separate Python analytics package. Shared API contracts keep the web and API aligned, while AWS CDK defines the infrastructure that runs the services, jobs, database, authentication, and monitoring.
+That product experience produces several kinds of state: interactive requests, complete draft snapshots, durable normalized recipes, and recommendation data generated from user behavior. The architecture connects these responsibilities through a TypeScript web and API layer, a shared PostgreSQL system of record, and a separate Python package for recommendation experiments and scheduled computation. This article follows those boundaries from the request path through deployment, testing, and operations.
 
 ## 1. The Architecture at a Glance
 

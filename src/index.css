@@ -224,6 +224,15 @@ h3 {
   margin: 1.25rem 0;
 }
 
+.prose p:has(> .image-button) + p:has(> em:only-child) {
+  max-width: 48rem;
+  margin: -1rem auto 2.5rem;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .prose img {
   display: block;
   width: 100%;

@@ -1,4 +1,4 @@
-# How Dishcraft Recommends Recipes
+# Recipe Recommendation
 
 Dishcraft's recommendation system is designed around a practical product goal: help each user see a short list of recipes that better fits their tastes, instead of asking them to search the entire catalog every time they want to cook.
 
