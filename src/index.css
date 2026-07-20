@@ -1,6 +1,6 @@
 :root {
-  color: #172033;
-  background: #e5e7eb;
+  color: #d8dee9;
+  background: #0f172a;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
   font-synthesis: none;
@@ -18,12 +18,12 @@ body {
 }
 
 a {
-  color: #4f46e5;
+  color: #a5b4fc;
   text-decoration: none;
 }
 
 a:hover {
-  color: #3730a3;
+  color: #c4b5fd;
 }
 
 .site {
@@ -38,11 +38,11 @@ a:hover {
   justify-content: space-between;
   gap: 2rem;
   padding: 1.5rem 0;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #263349;
 }
 
 .brand {
-  color: #172033;
+  color: #f8fafc;
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -61,19 +61,19 @@ a:hover {
   gap: 0.9rem;
   margin-left: 0.25rem;
   padding-left: 1.25rem;
-  border-left: 1px solid #d1d5db;
+  border-left: 1px solid #334155;
 }
 
 .social-link {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  color: #5b6475;
+  color: #aeb8c8;
   font-size: 0.84rem;
 }
 
 .social-link:hover {
-  color: #3730a3;
+  color: #c4b5fd;
 }
 
 .social-link svg {
@@ -89,7 +89,7 @@ a:hover {
 .hero-title,
 h1 {
   margin: 0 0 1rem;
-  color: #111827;
+  color: #f8fafc;
   font-size: clamp(2.5rem, 7vw, 4.5rem);
   letter-spacing: -0.055em;
   line-height: 1.05;
@@ -97,14 +97,14 @@ h1 {
 
 h2 {
   margin: 0 0 1.25rem;
-  color: #111827;
+  color: #f8fafc;
   font-size: 1.5rem;
   letter-spacing: -0.03em;
 }
 
 h3 {
   margin: 0.35rem 0 0.6rem;
-  color: #111827;
+  color: #f8fafc;
   font-size: 1.2rem;
   letter-spacing: -0.02em;
 }
@@ -112,7 +112,7 @@ h3 {
 .eyebrow,
 .card-kicker {
   margin: 0 0 0.75rem;
-  color: #6366f1;
+  color: #a5b4fc;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -122,7 +122,7 @@ h3 {
 .lede {
   max-width: 38rem;
   margin: 0;
-  color: #5b6475;
+  color: #aeb8c8;
   font-size: 1.15rem;
 }
 
@@ -139,30 +139,30 @@ h3 {
 .project-card,
 .post-card {
   display: block;
-  border: 1px solid #e1e5ed;
+  border: 1px solid #2c3a50;
   border-radius: 0.9rem;
-  background: #fff;
+  background: #182235;
   padding: 1.5rem;
-  box-shadow: 0 0.5rem 1.5rem rgb(31 41 55 / 4%);
+  box-shadow: 0 0.75rem 1.75rem rgb(0 0 0 / 16%);
   transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
 .project-card:hover,
 .post-card:hover {
-  border-color: #a5b4fc;
-  box-shadow: 0 1rem 2rem rgb(31 41 55 / 8%);
+  border-color: #818cf8;
+  box-shadow: 0 1rem 2rem rgb(0 0 0 / 24%);
   transform: translateY(-2px);
 }
 
 .project-card p {
   margin: 0 0 1.5rem;
-  color: #5b6475;
+  color: #aeb8c8;
 }
 
 .card-kicker {
   display: block;
   margin-bottom: 0.5rem;
-  color: #818cf8;
+  color: #a5b4fc;
 }
 
 .card-link {
@@ -181,7 +181,7 @@ h3 {
 }
 
 .muted {
-  color: #6b7280;
+  color: #94a3b8;
 }
 
 .back-link {
@@ -197,7 +197,7 @@ h3 {
 
 .prose {
   max-width: 60rem;
-  color: #374151;
+  color: #d1d5db;
   font-size: 1.05rem;
   line-height: 1.8;
 }
@@ -230,9 +230,9 @@ h3 {
   max-width: 60rem;
   height: auto;
   margin: 2rem 0;
-  border: 1px solid #e1e5ed;
+  border: 1px solid #334155;
   border-radius: 0.75rem;
-  box-shadow: 0 0.75rem 2rem rgb(31 41 55 / 8%);
+  box-shadow: 0 0.75rem 2rem rgb(0 0 0 / 22%);
 }
 
 .image-button {
@@ -253,7 +253,7 @@ h3 {
 
 .image-button:hover img {
   transform: scale(1.01);
-  box-shadow: 0 1rem 2.5rem rgb(31 41 55 / 14%);
+  box-shadow: 0 1rem 2.5rem rgb(0 0 0 / 30%);
 }
 
 .image-lightbox {
@@ -279,23 +279,23 @@ h3 {
 .prose table {
   width: 100%;
   margin: 2rem 0;
-  border: 1px solid #cfd5df;
+  border: 1px solid #3b4a62;
   border-spacing: 0;
   border-radius: 0.75rem;
-  background: #fff;
+  background: #182235;
   overflow: hidden;
 }
 
 .prose th,
 .prose td {
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #2c3a50;
   text-align: left;
 }
 
 .prose th {
-  background: #eef0f5;
-  color: #172033;
+  background: #253047;
+  color: #f8fafc;
   font-size: 0.9rem;
 }
 
@@ -306,13 +306,13 @@ h3 {
 .prose blockquote {
   margin-left: 0;
   padding-left: 1.25rem;
-  border-left: 3px solid #a5b4fc;
-  color: #5b6475;
+  border-left: 3px solid #818cf8;
+  color: #aeb8c8;
 }
 
 .prose code {
   border-radius: 0.25rem;
-  background: #eef0f5;
+  background: #253047;
   padding: 0.15em 0.35em;
   font-size: 0.9em;
 }
@@ -320,7 +320,7 @@ h3 {
 .prose pre {
   overflow-x: auto;
   border-radius: 0.75rem;
-  background: #111827;
+  background: #080d18;
   padding: 1.25rem;
   color: #e5e7eb;
 }

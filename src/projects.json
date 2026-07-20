@@ -2,7 +2,7 @@
   {
     "slug": "dishcraft",
     "name": "Dishcraft",
-    "description": "A full-stack recipe platform with cloud-native infrastructure."
+    "description": "Cloud-native recipe platform for discovering, refining, and creating recipes with AI-assisted generation and personalized recommendations."
   },
   {
     "slug": "quandary",

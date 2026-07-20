@@ -8,9 +8,8 @@ export function Home() {
       <SiteHeader />
       <main className="page">
         <p className="eyebrow">Software engineer</p>
-        <h1 className="hero-title">Selected works</h1>
+        <h1 className="hero-title">Selected projects</h1>
       <section className="section">
-        <h2>Projects</h2>
         <div className="project-grid">
           {projects.map((project) => (
             <Link className="project-card" key={project.slug} to={`/projects/${project.slug}/`}>
