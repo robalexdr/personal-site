@@ -48,6 +48,18 @@ a:hover {
   letter-spacing: -0.02em;
 }
 
+.identity {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.role {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
 .site-nav {
   display: flex;
   align-items: center;
@@ -127,7 +139,7 @@ h3 {
 }
 
 .section {
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 .project-list {
@@ -374,6 +386,12 @@ h3 {
     align-items: flex-start;
     flex-direction: column;
     gap: 0.75rem;
+  }
+
+  .identity {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.1rem;
   }
 
   .social-links {

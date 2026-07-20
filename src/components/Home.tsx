@@ -7,7 +7,6 @@ export function Home() {
     <div className="site">
       <SiteHeader />
       <main className="page">
-        <p className="eyebrow">Software engineer</p>
         <h1 className="hero-title">Selected projects</h1>
       <section className="section">
         <div className="project-list">

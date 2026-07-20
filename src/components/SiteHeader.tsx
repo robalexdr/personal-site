@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom'
 export function SiteHeader() {
   return (
     <header className="site-header">
-      <Link className="brand" to="/">
-        Robert Alexander
-      </Link>
+      <div className="identity">
+        <Link className="brand" to="/">
+          Robert Alexander
+        </Link>
+        <span className="role">Software Engineer</span>
+      </div>
       <nav className="site-nav" aria-label="Main navigation">
         <Link to="/">Projects</Link>
         <a href="/resume.pdf">Resume</a>
