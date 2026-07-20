@@ -2,11 +2,13 @@
   {
     "slug": "dishcraft",
     "name": "Dishcraft",
-    "description": "Cloud-native recipe platform for discovering, refining, and creating recipes with AI-assisted generation and personalized recommendations."
+    "status": "MVP",
+    "description": "Cloud-native recipe platform for discovering, refining, and creating recipes with intelligent generation and personalized recommendations."
   },
   {
     "slug": "quandary",
     "name": "Quandary",
-    "description": "An AI-assisted learning platform for note-centric knowledge management."
+    "status": "Early development",
+    "description": "Local-first learning system that uses adaptive dialogue, your notes, and external sources to deepen understanding and strengthen long-term retention."
   }
 ]

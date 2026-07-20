@@ -130,9 +130,9 @@ h3 {
   margin-top: 5rem;
 }
 
-.project-grid {
+.project-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 48rem;
   gap: 1rem;
 }
 
@@ -163,6 +163,26 @@ h3 {
   display: block;
   margin-bottom: 0.5rem;
   color: #a5b4fc;
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #4c5d7a;
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  color: #c4b5fd;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .card-link {
@@ -348,10 +368,6 @@ h3 {
 
   .page {
     padding-top: 3.5rem;
-  }
-
-  .project-grid {
-    grid-template-columns: 1fr;
   }
 
   .site-header {
