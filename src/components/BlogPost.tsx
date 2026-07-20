@@ -2,8 +2,10 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { useState, type ImgHTMLAttributes } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
+import { extractHeadings, slugifyHeading } from '../blog/headings.ts'
 import { displayProjectName, getPost } from '../blog/posts.ts'
 import { SiteHeader } from './SiteHeader.tsx'
+import { TableOfContents } from './TableOfContents.tsx'
 
 function MarkdownImage({ src, alt, title }: ImgHTMLAttributes<HTMLImageElement>) {
   const [isOpen, setIsOpen] = useState(false)
@@ -42,6 +44,21 @@ export function BlogPost() {
     return <Navigate to="/" replace />
   }
 
+  const headings = extractHeadings(post.content)
+
+  const headingComponents = {
+    h2: ({ children, ...props }: { children?: React.ReactNode }) => (
+      <h2 id={slugifyHeading(String(children ?? ''))} {...props}>
+        {children}
+      </h2>
+    ),
+    h3: ({ children, ...props }: { children?: React.ReactNode }) => (
+      <h3 id={slugifyHeading(String(children ?? ''))} {...props}>
+        {children}
+      </h3>
+    ),
+  }
+
   return (
     <div className="site">
       <SiteHeader />
@@ -49,14 +66,17 @@ export function BlogPost() {
         <Link className="back-link" to={`/projects/${project}/`}>
           ← Back to {displayProjectName(project)}
         </Link>
-        <article className="prose">
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            components={{ img: MarkdownImage }}
-          >
-            {post.content}
-          </ReactMarkdown>
-        </article>
+        <div className="article-layout">
+          <TableOfContents headings={headings} />
+          <article className="prose">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{ ...headingComponents, img: MarkdownImage }}
+            >
+              {post.content}
+            </ReactMarkdown>
+          </article>
+        </div>
       </main>
     </div>
   )
