@@ -12,6 +12,8 @@ At a high level, the system looks like this:
 
 The API is the primary application boundary for user-facing actions, but it is not the only process that reads or writes the database. Analytics needs to process batches of data, and migrations and seeds need controlled operational access. Keeping those paths explicit makes the architecture more honest and lets each workload use an appropriate execution model.
 
+The full [Dishcraft API reference](/projects/dishcraft/api/) is available alongside this architecture overview.
+
 ## 2. Technology Stack
 
 ### Web application

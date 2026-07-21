@@ -20,6 +20,16 @@ export function Project() {
       <h1>{project.name}</h1>
       <p className="lede">{project.description}</p>
 
+      {project.slug === 'dishcraft' && (
+        <section className="section">
+          <h2>API</h2>
+          <p className="muted">Browse the interactive OpenAPI reference for Dishcraft.</p>
+          <Link className="card-link" to={`/projects/${project.slug}/api/`}>
+            Explore API docs <span aria-hidden="true">→</span>
+          </Link>
+        </section>
+      )}
+
       <section className="section">
         <h2>Blog</h2>
         {posts.length > 0 ? (

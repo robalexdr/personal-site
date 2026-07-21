@@ -1,0 +1,3702 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Dishcraft API",
+    "description": "API for discovering, authoring, and tweaking recipes.",
+    "version": "1.0.0"
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Cognito ID token."
+      }
+    },
+    "schemas": {}
+  },
+  "paths": {
+    "/api/tags/preferences": {
+      "get": {
+        "operationId": "getTagPreferences",
+        "tags": [
+          "Tags"
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "like",
+                    "dislike",
+                    "exclude"
+                  ],
+                  "properties": {
+                    "like": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "name"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        }
+                      }
+                    },
+                    "dislike": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "name"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        }
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "name"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "patchTagPreferences",
+        "tags": [
+          "Tags"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "newTagPreferences"
+                ],
+                "properties": {
+                  "newTagPreferences": {
+                    "type": "object",
+                    "required": [
+                      "like",
+                      "dislike",
+                      "exclude"
+                    ],
+                    "properties": {
+                      "like": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "name"
+                          ],
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "pattern": ".+"
+                            }
+                          }
+                        }
+                      },
+                      "dislike": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "name"
+                          ],
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "pattern": ".+"
+                            }
+                          }
+                        }
+                      },
+                      "exclude": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "name"
+                          ],
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "pattern": ".+"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "like",
+                    "dislike",
+                    "exclude"
+                  ],
+                  "properties": {
+                    "like": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "name"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        }
+                      }
+                    },
+                    "dislike": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "name"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        }
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "name"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tags/{id}": {
+      "get": {
+        "operationId": "getTag",
+        "tags": [
+          "Tags"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "name"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "name": {
+                      "type": "string",
+                      "pattern": ".+"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "issues"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "VALIDATION_ERROR"
+                      ]
+                    },
+                    "issues": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "resource",
+                    "key",
+                    "value"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "resource": {
+                      "type": "string",
+                      "enum": [
+                        "tag"
+                      ]
+                    },
+                    "key": {
+                      "type": "string",
+                      "pattern": ".+"
+                    },
+                    "value": {
+                      "type": "string",
+                      "pattern": ".+"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tags": {
+      "get": {
+        "operationId": "getTags",
+        "tags": [
+          "Tags"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 20
+            },
+            "in": "query",
+            "name": "limit",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            },
+            "in": "query",
+            "name": "offset",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "name"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "name": {
+                        "type": "string",
+                        "pattern": ".+"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "issues"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "VALIDATION_ERROR"
+                      ]
+                    },
+                    "issues": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/recipes/{id}": {
+      "get": {
+        "operationId": "findRecipe",
+        "tags": [
+          "Recipes"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "slug",
+                    "name",
+                    "equipmentQuantities",
+                    "ingredients",
+                    "steps",
+                    "tags",
+                    "isFavorited",
+                    "prompts",
+                    "timesCooked",
+                    "rating"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "pattern": "^[a-z]+(?:-[a-z]+)*$"
+                    },
+                    "name": {
+                      "type": "string",
+                      "pattern": ".+"
+                    },
+                    "equipmentQuantities": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "position",
+                          "equipment",
+                          "count"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "position": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "equipment": {
+                            "type": "object",
+                            "required": [
+                              "id",
+                              "name"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "format": "uuid"
+                              },
+                              "name": {
+                                "type": "string",
+                                "pattern": ".+"
+                              }
+                            }
+                          },
+                          "count": {
+                            "type": "integer",
+                            "minimum": 1
+                          }
+                        }
+                      }
+                    },
+                    "ingredients": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "position",
+                          "grocery",
+                          "unit",
+                          "amount"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "position": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "grocery": {
+                            "type": "object",
+                            "required": [
+                              "id",
+                              "name"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "format": "uuid"
+                              },
+                              "name": {
+                                "type": "string",
+                                "pattern": ".+"
+                              }
+                            }
+                          },
+                          "unit": {
+                            "type": "object",
+                            "required": [
+                              "id",
+                              "name",
+                              "dimension"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "format": "uuid"
+                              },
+                              "name": {
+                                "type": "string",
+                                "pattern": ".+"
+                              },
+                              "dimension": {
+                                "type": "string",
+                                "pattern": ".+"
+                              }
+                            }
+                          },
+                          "amount": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        }
+                      }
+                    },
+                    "steps": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": ".+"
+                      }
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "name"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        }
+                      }
+                    },
+                    "isFavorited": {
+                      "type": "boolean"
+                    },
+                    "prompts": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": ".+"
+                      }
+                    },
+                    "timesCooked": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rating": {
+                      "anyOf": [
+                        {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "thumbsUp"
+                              ]
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "thumbsDown"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "issues"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "VALIDATION_ERROR"
+                      ]
+                    },
+                    "issues": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "resource",
+                    "key",
+                    "value"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "resource": {
+                      "type": "string",
+                      "enum": [
+                        "recipe"
+                      ]
+                    },
+                    "key": {
+                      "type": "string",
+                      "pattern": ".+"
+                    },
+                    "value": {
+                      "type": "string",
+                      "pattern": ".+"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/recipes": {
+      "get": {
+        "operationId": "findRecipes",
+        "tags": [
+          "Recipes"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 20
+            },
+            "in": "query",
+            "name": "limit",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            },
+            "in": "query",
+            "name": "offset",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "isFavorited",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "showHidden",
+            "required": false
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": ".+"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": ".+"
+                  }
+                }
+              ]
+            },
+            "in": "query",
+            "name": "tags",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "slug",
+                      "name",
+                      "tags",
+                      "isFavorited",
+                      "prompts"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "slug": {
+                        "type": "string",
+                        "pattern": "^[a-z]+(?:-[a-z]+)*$"
+                      },
+                      "name": {
+                        "type": "string",
+                        "pattern": ".+"
+                      },
+                      "tags": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "id",
+                            "name"
+                          ],
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid"
+                            },
+                            "name": {
+                              "type": "string",
+                              "pattern": ".+"
+                            }
+                          }
+                        }
+                      },
+                      "isFavorited": {
+                        "type": "boolean"
+                      },
+                      "prompts": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "pattern": ".+"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "issues"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "VALIDATION_ERROR"
+                      ]
+                    },
+                    "issues": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/recipes/{id}/favorite": {
+      "patch": {
+        "operationId": "favoriteRecipe",
+        "tags": [
+          "Recipes"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "slug",
+                    "name",
+                    "equipmentQuantities",
+                    "ingredients",
+                    "steps",
+                    "tags",
+                    "isFavorited",
+                    "prompts",
+                    "timesCooked",
+                    "rating"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "pattern": "^[a-z]+(?:-[a-z]+)*$"
+                    },
+                    "name": {
+                      "type": "string",
+                      "pattern": ".+"
+                    },
+                    "equipmentQuantities": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "position",
+                          "equipment",
+                          "count"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "position": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "equipment": {
+                            "type": "object",
+                            "required": [
+                              "id",
+                              "name"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "format": "uuid"
+                              },
+                              "name": {
+                                "type": "string",
+                                "pattern": ".+"
+                              }
+                            }
+                          },
+                          "count": {
+                            "type": "integer",
+                            "minimum": 1
+                          }
+                        }
+                      }
+                    },
+                    "ingredients": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "position",
+                          "grocery",
+                          "unit",
+                          "amount"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "position": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "grocery": {
+                            "type": "object",
+                            "required": [
+                              "id",
+                              "name"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "format": "uuid"
+                              },
+                              "name": {
+                                "type": "string",
+                                "pattern": ".+"
+                              }
+                            }
+                          },
+                          "unit": {
+                            "type": "object",
+                            "required": [
+                              "id",
+                              "name",
+                              "dimension"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "format": "uuid"
+                              },
+                              "name": {
+                                "type": "string",
+                                "pattern": ".+"
+                              },
+                              "dimension": {
+                                "type": "string",
+                                "pattern": ".+"
+                              }
+                            }
+                          },
+                          "amount": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        }
+                      }
+                    },
+                    "steps": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": ".+"
+                      }
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "name"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        }
+                      }
+                    },
+                    "isFavorited": {
+                      "type": "boolean"
+                    },
+                    "prompts": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": ".+"
+                      }
+                    },
+                    "timesCooked": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rating": {
+                      "anyOf": [
+                        {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "thumbsUp"
+                              ]
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "thumbsDown"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "issues"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "VALIDATION_ERROR"
+                      ]
+                    },
+                    "issues": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "resource",
+                    "key",
+                    "value"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "resource": {
+                      "type": "string",
+                      "enum": [
+                        "recipe"
+                      ]
+                    },
+                    "key": {
+                      "type": "string",
+                      "pattern": ".+"
+                    },
+                    "value": {
+                      "type": "string",
+                      "pattern": ".+"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/recipes/{id}/unfavorite": {
+      "patch": {
+        "operationId": "unfavoriteRecipe",
+        "tags": [
+          "Recipes"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "slug",
+                    "name",
+                    "equipmentQuantities",
+                    "ingredients",
+                    "steps",
+                    "tags",
+                    "isFavorited",
+                    "prompts",
+                    "timesCooked",
+                    "rating"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "pattern": "^[a-z]+(?:-[a-z]+)*$"
+                    },
+                    "name": {
+                      "type": "string",
+                      "pattern": ".+"
+                    },
+                    "equipmentQuantities": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "position",
+                          "equipment",
+                          "count"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "position": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "equipment": {
+                            "type": "object",
+                            "required": [
+                              "id",
+                              "name"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "format": "uuid"
+                              },
+                              "name": {
+                                "type": "string",
+                                "pattern": ".+"
+                              }
+                            }
+                          },
+                          "count": {
+                            "type": "integer",
+                            "minimum": 1
+                          }
+                        }
+                      }
+                    },
+                    "ingredients": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "position",
+                          "grocery",
+                          "unit",
+                          "amount"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "position": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "grocery": {
+                            "type": "object",
+                            "required": [
+                              "id",
+                              "name"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "format": "uuid"
+                              },
+                              "name": {
+                                "type": "string",
+                                "pattern": ".+"
+                              }
+                            }
+                          },
+                          "unit": {
+                            "type": "object",
+                            "required": [
+                              "id",
+                              "name",
+                              "dimension"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "format": "uuid"
+                              },
+                              "name": {
+                                "type": "string",
+                                "pattern": ".+"
+                              },
+                              "dimension": {
+                                "type": "string",
+                                "pattern": ".+"
+                              }
+                            }
+                          },
+                          "amount": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        }
+                      }
+                    },
+                    "steps": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": ".+"
+                      }
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "name"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        }
+                      }
+                    },
+                    "isFavorited": {
+                      "type": "boolean"
+                    },
+                    "prompts": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": ".+"
+                      }
+                    },
+                    "timesCooked": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rating": {
+                      "anyOf": [
+                        {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "thumbsUp"
+                              ]
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "thumbsDown"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "issues"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "VALIDATION_ERROR"
+                      ]
+                    },
+                    "issues": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "resource",
+                    "key",
+                    "value"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "resource": {
+                      "type": "string",
+                      "enum": [
+                        "recipe"
+                      ]
+                    },
+                    "key": {
+                      "type": "string",
+                      "pattern": ".+"
+                    },
+                    "value": {
+                      "type": "string",
+                      "pattern": ".+"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/recipes/{id}/cooked": {
+      "post": {
+        "operationId": "recordCooked",
+        "tags": [
+          "Recipes"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "rating"
+                ],
+                "properties": {
+                  "rating": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "thumbsUp"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "thumbsDown"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "timesCooked",
+                    "rating"
+                  ],
+                  "properties": {
+                    "timesCooked": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "rating": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "enum": [
+                            "thumbsUp"
+                          ]
+                        },
+                        {
+                          "type": "string",
+                          "enum": [
+                            "thumbsDown"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "issues"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "VALIDATION_ERROR"
+                      ]
+                    },
+                    "issues": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "resource",
+                    "key",
+                    "value"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "resource": {
+                      "type": "string",
+                      "enum": [
+                        "recipe"
+                      ]
+                    },
+                    "key": {
+                      "type": "string",
+                      "pattern": ".+"
+                    },
+                    "value": {
+                      "type": "string",
+                      "pattern": ".+"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/recipes/recommendations": {
+      "get": {
+        "operationId": "findRecommendations",
+        "tags": [
+          "Recipes"
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "rank",
+                      "recipe"
+                    ],
+                    "properties": {
+                      "rank": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 5
+                      },
+                      "recipe": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "slug",
+                          "name",
+                          "tags",
+                          "isFavorited",
+                          "prompts"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "slug": {
+                            "type": "string",
+                            "pattern": "^[a-z]+(?:-[a-z]+)*$"
+                          },
+                          "name": {
+                            "type": "string",
+                            "pattern": ".+"
+                          },
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "id",
+                                "name"
+                              ],
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "format": "uuid"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "pattern": ".+"
+                                }
+                              }
+                            }
+                          },
+                          "isFavorited": {
+                            "type": "boolean"
+                          },
+                          "prompts": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "pattern": ".+"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/drafts/generate": {
+      "post": {
+        "operationId": "generateRecipeDraft",
+        "tags": [
+          "Drafts"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "source",
+                  "id",
+                  "prompt"
+                ],
+                "properties": {
+                  "source": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "recipe"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "draft"
+                        ]
+                      }
+                    ]
+                  },
+                  "id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "prompt": {
+                    "type": "string",
+                    "pattern": ".+"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "lineageId",
+                    "sourceRecipeId",
+                    "sourceDraftId",
+                    "prompt",
+                    "content"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "lineageId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "sourceRecipeId": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "sourceDraftId": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "prompt": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": ".+"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "content": {
+                      "type": "object",
+                      "required": [
+                        "name",
+                        "steps",
+                        "equipment",
+                        "ingredients",
+                        "tags"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "pattern": ".+"
+                        },
+                        "steps": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        },
+                        "equipment": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "count",
+                              "itemName"
+                            ],
+                            "properties": {
+                              "count": {
+                                "type": "integer",
+                                "minimum": 1
+                              },
+                              "itemName": {
+                                "type": "string",
+                                "pattern": ".+"
+                              }
+                            }
+                          }
+                        },
+                        "ingredients": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "amount",
+                              "unit",
+                              "itemName"
+                            ],
+                            "properties": {
+                              "amount": {
+                                "type": "string",
+                                "pattern": ".+"
+                              },
+                              "unit": {
+                                "type": "string",
+                                "pattern": ".+"
+                              },
+                              "itemName": {
+                                "type": "string",
+                                "pattern": ".+"
+                              }
+                            }
+                          }
+                        },
+                        "tags": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "issues"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "VALIDATION_ERROR"
+                      ]
+                    },
+                    "issues": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "required": [
+                        "code",
+                        "resource",
+                        "key",
+                        "value"
+                      ],
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": [
+                            "RESOURCE_NOT_FOUND"
+                          ]
+                        },
+                        "resource": {
+                          "type": "string",
+                          "enum": [
+                            "recipe"
+                          ]
+                        },
+                        "key": {
+                          "type": "string",
+                          "pattern": ".+"
+                        },
+                        "value": {
+                          "type": "string",
+                          "pattern": ".+"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "code",
+                        "resource",
+                        "key",
+                        "value"
+                      ],
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": [
+                            "RESOURCE_NOT_FOUND"
+                          ]
+                        },
+                        "resource": {
+                          "type": "string",
+                          "enum": [
+                            "recipeDraft"
+                          ]
+                        },
+                        "key": {
+                          "type": "string",
+                          "pattern": ".+"
+                        },
+                        "value": {
+                          "type": "string",
+                          "pattern": ".+"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/drafts/edit": {
+      "post": {
+        "operationId": "editRecipeDraft",
+        "tags": [
+          "Drafts"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "source",
+                  "content"
+                ],
+                "properties": {
+                  "source": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "type",
+                          "id"
+                        ],
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "recipe"
+                            ]
+                          },
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "type",
+                          "id"
+                        ],
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "draft"
+                            ]
+                          },
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "type"
+                        ],
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "original"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "content": {
+                    "type": "object",
+                    "required": [
+                      "name",
+                      "steps",
+                      "equipment",
+                      "ingredients",
+                      "tags"
+                    ],
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "pattern": ".+"
+                      },
+                      "steps": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "pattern": ".+"
+                        }
+                      },
+                      "equipment": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "count",
+                            "itemName"
+                          ],
+                          "properties": {
+                            "count": {
+                              "type": "integer",
+                              "minimum": 1
+                            },
+                            "itemName": {
+                              "type": "string",
+                              "pattern": ".+"
+                            }
+                          }
+                        }
+                      },
+                      "ingredients": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "amount",
+                            "unit",
+                            "itemName"
+                          ],
+                          "properties": {
+                            "amount": {
+                              "type": "string",
+                              "pattern": ".+"
+                            },
+                            "unit": {
+                              "type": "string",
+                              "pattern": ".+"
+                            },
+                            "itemName": {
+                              "type": "string",
+                              "pattern": ".+"
+                            }
+                          }
+                        }
+                      },
+                      "tags": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "pattern": ".+"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "lineageId",
+                    "sourceRecipeId",
+                    "sourceDraftId",
+                    "prompt",
+                    "content"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "lineageId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "sourceRecipeId": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "sourceDraftId": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "prompt": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": ".+"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "content": {
+                      "type": "object",
+                      "required": [
+                        "name",
+                        "steps",
+                        "equipment",
+                        "ingredients",
+                        "tags"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "pattern": ".+"
+                        },
+                        "steps": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        },
+                        "equipment": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "count",
+                              "itemName"
+                            ],
+                            "properties": {
+                              "count": {
+                                "type": "integer",
+                                "minimum": 1
+                              },
+                              "itemName": {
+                                "type": "string",
+                                "pattern": ".+"
+                              }
+                            }
+                          }
+                        },
+                        "ingredients": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "amount",
+                              "unit",
+                              "itemName"
+                            ],
+                            "properties": {
+                              "amount": {
+                                "type": "string",
+                                "pattern": ".+"
+                              },
+                              "unit": {
+                                "type": "string",
+                                "pattern": ".+"
+                              },
+                              "itemName": {
+                                "type": "string",
+                                "pattern": ".+"
+                              }
+                            }
+                          }
+                        },
+                        "tags": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "issues"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "VALIDATION_ERROR"
+                      ]
+                    },
+                    "issues": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "required": [
+                        "code",
+                        "resource",
+                        "key",
+                        "value"
+                      ],
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": [
+                            "RESOURCE_NOT_FOUND"
+                          ]
+                        },
+                        "resource": {
+                          "type": "string",
+                          "enum": [
+                            "recipe"
+                          ]
+                        },
+                        "key": {
+                          "type": "string",
+                          "pattern": ".+"
+                        },
+                        "value": {
+                          "type": "string",
+                          "pattern": ".+"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "code",
+                        "resource",
+                        "key",
+                        "value"
+                      ],
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": [
+                            "RESOURCE_NOT_FOUND"
+                          ]
+                        },
+                        "resource": {
+                          "type": "string",
+                          "enum": [
+                            "recipeDraft"
+                          ]
+                        },
+                        "key": {
+                          "type": "string",
+                          "pattern": ".+"
+                        },
+                        "value": {
+                          "type": "string",
+                          "pattern": ".+"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/drafts/{draftId}": {
+      "post": {
+        "operationId": "normalizeRecipeDraft",
+        "tags": [
+          "Drafts"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "in": "path",
+            "name": "draftId",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "slug",
+                    "name",
+                    "equipmentQuantities",
+                    "ingredients",
+                    "steps",
+                    "tags",
+                    "isFavorited",
+                    "prompts",
+                    "timesCooked",
+                    "rating"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "pattern": "^[a-z]+(?:-[a-z]+)*$"
+                    },
+                    "name": {
+                      "type": "string",
+                      "pattern": ".+"
+                    },
+                    "equipmentQuantities": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "position",
+                          "equipment",
+                          "count"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "position": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "equipment": {
+                            "type": "object",
+                            "required": [
+                              "id",
+                              "name"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "format": "uuid"
+                              },
+                              "name": {
+                                "type": "string",
+                                "pattern": ".+"
+                              }
+                            }
+                          },
+                          "count": {
+                            "type": "integer",
+                            "minimum": 1
+                          }
+                        }
+                      }
+                    },
+                    "ingredients": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "position",
+                          "grocery",
+                          "unit",
+                          "amount"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "position": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "grocery": {
+                            "type": "object",
+                            "required": [
+                              "id",
+                              "name"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "format": "uuid"
+                              },
+                              "name": {
+                                "type": "string",
+                                "pattern": ".+"
+                              }
+                            }
+                          },
+                          "unit": {
+                            "type": "object",
+                            "required": [
+                              "id",
+                              "name",
+                              "dimension"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "format": "uuid"
+                              },
+                              "name": {
+                                "type": "string",
+                                "pattern": ".+"
+                              },
+                              "dimension": {
+                                "type": "string",
+                                "pattern": ".+"
+                              }
+                            }
+                          },
+                          "amount": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        }
+                      }
+                    },
+                    "steps": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": ".+"
+                      }
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "name"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "pattern": ".+"
+                          }
+                        }
+                      }
+                    },
+                    "isFavorited": {
+                      "type": "boolean"
+                    },
+                    "prompts": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": ".+"
+                      }
+                    },
+                    "timesCooked": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rating": {
+                      "anyOf": [
+                        {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "thumbsUp"
+                              ]
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "thumbsDown"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "issues"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "VALIDATION_ERROR"
+                      ]
+                    },
+                    "issues": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "required": [
+                        "code",
+                        "resource",
+                        "key",
+                        "value"
+                      ],
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": [
+                            "RESOURCE_NOT_FOUND"
+                          ]
+                        },
+                        "resource": {
+                          "type": "string",
+                          "enum": [
+                            "recipe"
+                          ]
+                        },
+                        "key": {
+                          "type": "string",
+                          "pattern": ".+"
+                        },
+                        "value": {
+                          "type": "string",
+                          "pattern": ".+"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "code",
+                        "resource",
+                        "key",
+                        "value"
+                      ],
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": [
+                            "RESOURCE_NOT_FOUND"
+                          ]
+                        },
+                        "resource": {
+                          "type": "string",
+                          "enum": [
+                            "recipeDraft"
+                          ]
+                        },
+                        "key": {
+                          "type": "string",
+                          "pattern": ".+"
+                        },
+                        "value": {
+                          "type": "string",
+                          "pattern": ".+"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/me": {
+      "get": {
+        "operationId": "getMe",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "name",
+                    "email",
+                    "isAdmin"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "name": {
+                      "type": "string",
+                      "pattern": ".+"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email"
+                    },
+                    "isAdmin": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "resource",
+                    "key",
+                    "value"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "resource": {
+                      "type": "string",
+                      "enum": [
+                        "user"
+                      ]
+                    },
+                    "key": {
+                      "type": "string",
+                      "pattern": ".+"
+                    },
+                    "value": {
+                      "type": "string",
+                      "pattern": ".+"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/users": {
+      "get": {
+        "operationId": "getUsers",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "name",
+                      "email",
+                      "isAdmin",
+                      "affinities"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "name": {
+                        "type": "string",
+                        "pattern": ".+"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email"
+                      },
+                      "isAdmin": {
+                        "type": "boolean"
+                      },
+                      "affinities": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "value",
+                            "affinity"
+                          ],
+                          "properties": {
+                            "value": {
+                              "type": "string",
+                              "pattern": ".+"
+                            },
+                            "affinity": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "like"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "neutral"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "dislike"
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "userId"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "FORBIDDEN"
+                      ]
+                    },
+                    "userId": {
+                      "type": "string",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/impersonation": {
+      "post": {
+        "operationId": "startImpersonation",
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "userId"
+                ],
+                "properties": {
+                  "userId": {
+                    "type": "string",
+                    "format": "uuid"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "sessionId",
+                    "targetUser",
+                    "expiresAt"
+                  ],
+                  "properties": {
+                    "sessionId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "targetUser": {
+                      "type": "object",
+                      "required": [
+                        "id",
+                        "name",
+                        "email",
+                        "isAdmin"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "name": {
+                          "type": "string",
+                          "pattern": ".+"
+                        },
+                        "email": {
+                          "type": "string",
+                          "format": "email"
+                        },
+                        "isAdmin": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "expiresAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "issues"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "VALIDATION_ERROR"
+                      ]
+                    },
+                    "issues": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "userId"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "FORBIDDEN"
+                      ]
+                    },
+                    "userId": {
+                      "type": "string",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "resource",
+                    "key",
+                    "value"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "resource": {
+                      "type": "string",
+                      "enum": [
+                        "user"
+                      ]
+                    },
+                    "key": {
+                      "type": "string",
+                      "pattern": ".+"
+                    },
+                    "value": {
+                      "type": "string",
+                      "pattern": ".+"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/impersonation/end": {
+      "post": {
+        "operationId": "endImpersonation",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ended"
+                  ],
+                  "properties": {
+                    "ended": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "issues"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "VALIDATION_ERROR"
+                      ]
+                    },
+                    "issues": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "UNAUTHORIZED"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "enum": [
+                        "Authentication required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "userId"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "FORBIDDEN"
+                      ]
+                    },
+                    "userId": {
+                      "type": "string",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Recipes",
+      "description": "Recipe discovery and cooking history."
+    },
+    {
+      "name": "Tags",
+      "description": "Recipe tags and tag preferences."
+    },
+    {
+      "name": "Drafts",
+      "description": "Recipe draft generation and editing."
+    },
+    {
+      "name": "Users",
+      "description": "Authenticated user information."
+    },
+    {
+      "name": "Admin",
+      "description": "Administrative operations."
+    },
+    {
+      "name": "System",
+      "description": "Service health and readiness."
+    }
+  ]
+}

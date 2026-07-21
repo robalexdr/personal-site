@@ -227,6 +227,113 @@ h3 {
   padding-top: 3.5rem;
 }
 
+.api-docs-page {
+  padding-bottom: 3rem;
+}
+
+.api-docs {
+  width: calc(100vw - 3rem);
+  min-height: 60rem;
+  margin-top: 3rem;
+  margin-left: calc((100% - 100vw) / 2);
+  overflow: hidden;
+  border: 1px solid #2c3a50;
+  border-radius: 0.9rem;
+  background: #111827;
+}
+
+#redoc-container .redoc-wrap,
+#redoc-container .api-content,
+#redoc-container .api-content > div,
+#redoc-container .api-info,
+#redoc-container .redoc-markdown {
+  background-color: #111827 !important;
+  color: #e5e7eb !important;
+}
+
+#redoc-container .api-content h1,
+#redoc-container .api-content h2,
+#redoc-container .api-content h3,
+#redoc-container .api-content h4,
+#redoc-container .api-content p,
+#redoc-container .api-content li,
+#redoc-container .api-content td,
+#redoc-container .api-content th {
+  color: #e5e7eb !important;
+}
+
+#redoc-container .api-content * {
+  color: #e5e7eb !important;
+}
+
+#redoc-container .api-content a {
+  color: #a5b4fc !important;
+}
+
+#redoc-container .api-content .http-verb {
+  color: #ffffff !important;
+}
+
+#redoc-container .react-tabs__tab.react-tabs__tab--selected {
+  background: #166534 !important;
+  color: #ffffff !important;
+}
+
+#redoc-container .right-panel,
+#redoc-container .right-panel * {
+  color: #e5e7eb !important;
+}
+
+#redoc-container .right-panel .http-verb {
+  color: #ffffff !important;
+}
+
+#redoc-container .right-panel .react-tabs__tab.tab-success {
+  background: #166534 !important;
+  color: #ffffff !important;
+}
+
+#redoc-container .right-panel .react-tabs__tab.tab-error {
+  background: #7f1d1d !important;
+  color: #ffffff !important;
+}
+
+#redoc-container .right-panel .react-tabs__tab.tab-redirect {
+  background: #92400e !important;
+  color: #ffffff !important;
+}
+
+#redoc-container .right-panel .react-tabs__tab.tab-info {
+  background: #1e3a8a !important;
+  color: #ffffff !important;
+}
+
+#redoc-container li.react-tabs__tab.tab-success {
+  background: #166534 !important;
+  color: #ffffff !important;
+}
+
+#redoc-container li.react-tabs__tab.tab-error {
+  background: #7f1d1d !important;
+  color: #ffffff !important;
+}
+
+#redoc-container li.react-tabs__tab.tab-redirect {
+  background: #92400e !important;
+  color: #ffffff !important;
+}
+
+#redoc-container li.react-tabs__tab.tab-info {
+  background: #1e3a8a !important;
+  color: #ffffff !important;
+}
+
+.api-docs-error {
+  margin: 2rem;
+  color: #991b1b;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
 .article-layout {
   display: grid;
   grid-template-columns: 12rem minmax(0, 1fr);
@@ -448,6 +555,11 @@ h3 {
 
   .article-layout {
     display: block;
+  }
+
+  .api-docs {
+    width: 100%;
+    margin-left: 0;
   }
 
   .table-of-contents {
