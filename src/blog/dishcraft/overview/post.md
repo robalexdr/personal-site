@@ -12,7 +12,7 @@ The product has three connected experiences:
 2. Customize a recipe by describing the desired change in natural language.
 3. Find, favorite, and rate recipes as part of an ongoing cooking history.
 
-The goal is not simply to provide more recipes. It is to help each user find recipes that fit their tastes and circumstances, then make those recipes more useful when they do not quite fit as written.
+Dishcraft helps each user find recipes that fit their tastes and circumstances, then adapt those recipes when they do not quite fit as written.
 
 ## 2. The Problem It Solves
 
@@ -63,7 +63,7 @@ The recommendation experience is also designed to support evaluation. Rather tha
 - Do recommendations respond appropriately when a user's interests change?
 - Which signals provide the most useful evidence about preference?
 
-This turns personalization into an iterative product capability. The system is not expected to infer everything perfectly from the beginning; it is designed to improve as its signals, ranking logic, and evaluation methods develop.
+Personalization can improve over time as the system's signals, ranking logic, and evaluation methods develop. It does not need to infer everything perfectly from the beginning.
 
 The recommendation goal, baseline, ML approach, and evaluation process are described in more detail in [How Dishcraft Recommends Recipes](../recipe-recommendations/).
 
@@ -91,12 +91,12 @@ The full draft, lineage, and normalization workflow is described in the [recipe 
 
 Several design decisions shape the product experience.
 
-First, Dishcraft separates experimentation from durable data. A generated revision is a draft, not an immediate replacement for a saved recipe. This gives users control over what they keep and gives the system a reliable history of how a recipe changed.
+Dishcraft separates experimentation from durable data. A generated revision is a draft, not an immediate replacement for a saved recipe. Users control what they keep, while the system retains a reliable history of how a recipe changed.
 
-Second, the AI workflow is intentionally structured. Planning, generation, and schema validation each have a distinct role. That makes it possible to reject unsuitable requests, inspect the intended change, and ensure that the result is still a usable recipe rather than merely plausible text.
+The AI workflow is structured into planning, generation, and schema validation. Each stage has a distinct role: rejecting unsuitable requests, inspecting the intended change, and checking that the result is a usable recipe rather than merely plausible text.
 
-Third, personalization is treated as a system that needs evidence and evaluation. Favorites, ratings, cooking activity, recipe attributes, and simulated interactions provide ways to measure whether recommendations are useful instead of assuming that a ranked list is automatically a good one.
+Personalization also needs evidence and evaluation. Favorites, ratings, cooking activity, recipe attributes, and simulated interactions help measure whether recommendations are useful instead of assuming that a ranked list is automatically a good one.
 
-Finally, the frontend and backend share contracts for their requests and responses. This keeps the user interface and API aligned as features evolve, catches mismatches at the boundary, and makes product changes easier to implement with confidence.
+The frontend and backend share contracts for their requests and responses. This keeps the user interface and API aligned as features evolve, catches mismatches at the boundary, and makes product changes easier to implement.
 
 The full system structure and deployment model are described in the [Dishcraft architecture overview](../architecture/).

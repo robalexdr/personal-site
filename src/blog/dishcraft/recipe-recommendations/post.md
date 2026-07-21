@@ -107,7 +107,7 @@ Ridge improved mean NDCG@5 by `0.047` and mean top-five ground-truth compatibili
 
 That result supports using ridge as the preferred experimental strategy while keeping the rules-based approach as a transparent reference point. It does not prove that ridge will be better for every future dataset or that the system is ready for unrestricted production use. The evaluation is based on a controlled synthetic world with three recipe dimensions and simulated behavior.
 
-That limitation is part of the result, not a footnote. The experiment shows that the ML method can recover more of the simulated preference signal under the current assumptions. The next question is whether those assumptions remain useful when the product has richer recipe attributes, more varied user behavior, and real feedback.
+The experiment shows that the ML method can recover more of the simulated preference signal under the current assumptions. The next question is whether those assumptions remain useful when the product has richer recipe attributes, more varied user behavior, and real feedback.
 
 ### Reproducing the evaluation
 
@@ -125,4 +125,4 @@ The production-shaped workflow keeps recommendation computation separate from th
 
 This design keeps model computation out of the request path and gives each recommendation run a durable status and history. It also leaves room to compare strategies, inspect failures, and change the refresh schedule without changing the web experience.
 
-The current system is therefore deliberately staged: establish a measurable offline model, compare it with a transparent baseline, and only then make it part of the product's recurring recommendation workflow.
+The current system follows a staged path: establish a measurable offline model, compare it with a transparent baseline, and then decide whether it belongs in the product's recurring recommendation workflow.

@@ -17,447 +17,14 @@
     "schemas": {}
   },
   "paths": {
-    "/api/tags/preferences": {
-      "get": {
-        "operationId": "getTagPreferences",
-        "tags": [
-          "Tags"
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "like",
-                    "dislike",
-                    "exclude"
-                  ],
-                  "properties": {
-                    "like": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "required": [
-                          "id",
-                          "name"
-                        ],
-                        "properties": {
-                          "id": {
-                            "type": "string",
-                            "format": "uuid"
-                          },
-                          "name": {
-                            "type": "string",
-                            "pattern": ".+"
-                          }
-                        }
-                      }
-                    },
-                    "dislike": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "required": [
-                          "id",
-                          "name"
-                        ],
-                        "properties": {
-                          "id": {
-                            "type": "string",
-                            "format": "uuid"
-                          },
-                          "name": {
-                            "type": "string",
-                            "pattern": ".+"
-                          }
-                        }
-                      }
-                    },
-                    "exclude": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "required": [
-                          "id",
-                          "name"
-                        ],
-                        "properties": {
-                          "id": {
-                            "type": "string",
-                            "format": "uuid"
-                          },
-                          "name": {
-                            "type": "string",
-                            "pattern": ".+"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
-                  "properties": {
-                    "code": {
-                      "type": "string",
-                      "enum": [
-                        "UNAUTHORIZED"
-                      ]
-                    },
-                    "message": {
-                      "type": "string",
-                      "enum": [
-                        "Authentication required"
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "operationId": "patchTagPreferences",
-        "tags": [
-          "Tags"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "newTagPreferences"
-                ],
-                "properties": {
-                  "newTagPreferences": {
-                    "type": "object",
-                    "required": [
-                      "like",
-                      "dislike",
-                      "exclude"
-                    ],
-                    "properties": {
-                      "like": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "required": [
-                            "name"
-                          ],
-                          "properties": {
-                            "name": {
-                              "type": "string",
-                              "pattern": ".+"
-                            }
-                          }
-                        }
-                      },
-                      "dislike": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "required": [
-                            "name"
-                          ],
-                          "properties": {
-                            "name": {
-                              "type": "string",
-                              "pattern": ".+"
-                            }
-                          }
-                        }
-                      },
-                      "exclude": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "required": [
-                            "name"
-                          ],
-                          "properties": {
-                            "name": {
-                              "type": "string",
-                              "pattern": ".+"
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "like",
-                    "dislike",
-                    "exclude"
-                  ],
-                  "properties": {
-                    "like": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "required": [
-                          "id",
-                          "name"
-                        ],
-                        "properties": {
-                          "id": {
-                            "type": "string",
-                            "format": "uuid"
-                          },
-                          "name": {
-                            "type": "string",
-                            "pattern": ".+"
-                          }
-                        }
-                      }
-                    },
-                    "dislike": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "required": [
-                          "id",
-                          "name"
-                        ],
-                        "properties": {
-                          "id": {
-                            "type": "string",
-                            "format": "uuid"
-                          },
-                          "name": {
-                            "type": "string",
-                            "pattern": ".+"
-                          }
-                        }
-                      }
-                    },
-                    "exclude": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "required": [
-                          "id",
-                          "name"
-                        ],
-                        "properties": {
-                          "id": {
-                            "type": "string",
-                            "format": "uuid"
-                          },
-                          "name": {
-                            "type": "string",
-                            "pattern": ".+"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
-                  "properties": {
-                    "code": {
-                      "type": "string",
-                      "enum": [
-                        "UNAUTHORIZED"
-                      ]
-                    },
-                    "message": {
-                      "type": "string",
-                      "enum": [
-                        "Authentication required"
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/tags/{id}": {
-      "get": {
-        "operationId": "getTag",
-        "tags": [
-          "Tags"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "in": "path",
-            "name": "id",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "id",
-                    "name"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "format": "uuid"
-                    },
-                    "name": {
-                      "type": "string",
-                      "pattern": ".+"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "code",
-                    "issues"
-                  ],
-                  "properties": {
-                    "code": {
-                      "type": "string",
-                      "enum": [
-                        "VALIDATION_ERROR"
-                      ]
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {}
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
-                  "properties": {
-                    "code": {
-                      "type": "string",
-                      "enum": [
-                        "UNAUTHORIZED"
-                      ]
-                    },
-                    "message": {
-                      "type": "string",
-                      "enum": [
-                        "Authentication required"
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "code",
-                    "resource",
-                    "key",
-                    "value"
-                  ],
-                  "properties": {
-                    "code": {
-                      "type": "string",
-                      "enum": [
-                        "RESOURCE_NOT_FOUND"
-                      ]
-                    },
-                    "resource": {
-                      "type": "string",
-                      "enum": [
-                        "tag"
-                      ]
-                    },
-                    "key": {
-                      "type": "string",
-                      "pattern": ".+"
-                    },
-                    "value": {
-                      "type": "string",
-                      "pattern": ".+"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/tags": {
       "get": {
         "operationId": "getTags",
+        "summary": "List tags",
         "tags": [
           "Tags"
         ],
+        "description": "Returns available recipe tags with optional pagination.",
         "parameters": [
           {
             "schema": {
@@ -467,7 +34,8 @@
             },
             "in": "query",
             "name": "limit",
-            "required": false
+            "required": false,
+            "description": "Maximum number of results to return."
           },
           {
             "schema": {
@@ -477,7 +45,8 @@
             },
             "in": "query",
             "name": "offset",
-            "required": false
+            "required": false,
+            "description": "Number of results to skip."
           }
         ],
         "responses": {
@@ -496,11 +65,13 @@
                     "properties": {
                       "id": {
                         "type": "string",
-                        "format": "uuid"
+                        "format": "uuid",
+                        "description": "A UUID."
                       },
                       "name": {
                         "type": "string",
-                        "pattern": ".+"
+                        "pattern": ".+",
+                        "description": "A non-empty string."
                       }
                     }
                   }
@@ -509,7 +80,7 @@
             }
           },
           "400": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: VALIDATION_ERROR.",
             "content": {
               "application/json": {
                 "schema": {
@@ -529,13 +100,14 @@
                       "type": "array",
                       "items": {}
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: VALIDATION_ERROR."
                 }
               }
             }
           },
           "401": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: UNAUTHORIZED.",
             "content": {
               "application/json": {
                 "schema": {
@@ -557,7 +129,8 @@
                         "Authentication required"
                       ]
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: UNAUTHORIZED."
                 }
               }
             }
@@ -568,9 +141,11 @@
     "/api/recipes/{id}": {
       "get": {
         "operationId": "findRecipe",
+        "summary": "Get a recipe",
         "tags": [
           "Recipes"
         ],
+        "description": "Returns the full recipe, including ingredients, equipment, steps, tags, and the authenticated user's cooking state.",
         "parameters": [
           {
             "schema": {
@@ -579,7 +154,8 @@
             },
             "in": "path",
             "name": "id",
-            "required": true
+            "required": true,
+            "description": "A UUID."
           }
         ],
         "responses": {
@@ -605,15 +181,18 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "A UUID."
                     },
                     "slug": {
                       "type": "string",
-                      "pattern": "^[a-z]+(?:-[a-z]+)*$"
+                      "pattern": "^[a-z]+(?:-[a-z]+)*$",
+                      "description": "A lowercase URL-safe slug."
                     },
                     "name": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     },
                     "equipmentQuantities": {
                       "type": "array",
@@ -628,11 +207,13 @@
                         "properties": {
                           "id": {
                             "type": "string",
-                            "format": "uuid"
+                            "format": "uuid",
+                            "description": "A UUID."
                           },
                           "position": {
                             "type": "integer",
-                            "minimum": 1
+                            "minimum": 1,
+                            "description": "An integer greater than zero."
                           },
                           "equipment": {
                             "type": "object",
@@ -643,17 +224,20 @@
                             "properties": {
                               "id": {
                                 "type": "string",
-                                "format": "uuid"
+                                "format": "uuid",
+                                "description": "A UUID."
                               },
                               "name": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               }
                             }
                           },
                           "count": {
                             "type": "integer",
-                            "minimum": 1
+                            "minimum": 1,
+                            "description": "An integer greater than zero."
                           }
                         }
                       }
@@ -672,11 +256,13 @@
                         "properties": {
                           "id": {
                             "type": "string",
-                            "format": "uuid"
+                            "format": "uuid",
+                            "description": "A UUID."
                           },
                           "position": {
                             "type": "integer",
-                            "minimum": 1
+                            "minimum": 1,
+                            "description": "An integer greater than zero."
                           },
                           "grocery": {
                             "type": "object",
@@ -687,11 +273,13 @@
                             "properties": {
                               "id": {
                                 "type": "string",
-                                "format": "uuid"
+                                "format": "uuid",
+                                "description": "A UUID."
                               },
                               "name": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               }
                             }
                           },
@@ -705,21 +293,25 @@
                             "properties": {
                               "id": {
                                 "type": "string",
-                                "format": "uuid"
+                                "format": "uuid",
+                                "description": "A UUID."
                               },
                               "name": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               },
                               "dimension": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               }
                             }
                           },
                           "amount": {
                             "type": "string",
-                            "pattern": ".+"
+                            "pattern": ".+",
+                            "description": "A quantity, such as 2 or 1/2."
                           }
                         }
                       }
@@ -728,7 +320,8 @@
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "pattern": ".+"
+                        "pattern": ".+",
+                        "description": "A non-empty string."
                       }
                     },
                     "tags": {
@@ -742,11 +335,13 @@
                         "properties": {
                           "id": {
                             "type": "string",
-                            "format": "uuid"
+                            "format": "uuid",
+                            "description": "A UUID."
                           },
                           "name": {
                             "type": "string",
-                            "pattern": ".+"
+                            "pattern": ".+",
+                            "description": "A non-empty string."
                           }
                         }
                       }
@@ -758,12 +353,14 @@
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "pattern": ".+"
+                        "pattern": ".+",
+                        "description": "A non-empty string."
                       }
                     },
                     "timesCooked": {
                       "type": "integer",
-                      "minimum": 0
+                      "minimum": 0,
+                      "description": "An integer greater than or equal to zero."
                     },
                     "rating": {
                       "anyOf": [
@@ -794,7 +391,7 @@
             }
           },
           "400": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: VALIDATION_ERROR.",
             "content": {
               "application/json": {
                 "schema": {
@@ -814,13 +411,14 @@
                       "type": "array",
                       "items": {}
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: VALIDATION_ERROR."
                 }
               }
             }
           },
           "401": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: UNAUTHORIZED.",
             "content": {
               "application/json": {
                 "schema": {
@@ -842,13 +440,14 @@
                         "Authentication required"
                       ]
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: UNAUTHORIZED."
                 }
               }
             }
           },
           "404": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: RESOURCE_NOT_FOUND.",
             "content": {
               "application/json": {
                 "schema": {
@@ -874,13 +473,16 @@
                     },
                     "key": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     },
                     "value": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: RESOURCE_NOT_FOUND."
                 }
               }
             }
@@ -891,9 +493,11 @@
     "/api/recipes": {
       "get": {
         "operationId": "findRecipes",
+        "summary": "List recipes",
         "tags": [
           "Recipes"
         ],
+        "description": "Returns recipe previews with optional pagination, favorite, visibility, and tag filters.",
         "parameters": [
           {
             "schema": {
@@ -903,7 +507,8 @@
             },
             "in": "query",
             "name": "limit",
-            "required": false
+            "required": false,
+            "description": "Maximum number of results to return."
           },
           {
             "schema": {
@@ -913,7 +518,8 @@
             },
             "in": "query",
             "name": "offset",
-            "required": false
+            "required": false,
+            "description": "Number of results to skip."
           },
           {
             "schema": {
@@ -936,13 +542,15 @@
               "anyOf": [
                 {
                   "type": "string",
-                  "pattern": ".+"
+                  "pattern": ".+",
+                  "description": "A non-empty string."
                 },
                 {
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "pattern": ".+"
+                    "pattern": ".+",
+                    "description": "A non-empty string."
                   }
                 }
               ]
@@ -972,15 +580,18 @@
                     "properties": {
                       "id": {
                         "type": "string",
-                        "format": "uuid"
+                        "format": "uuid",
+                        "description": "A UUID."
                       },
                       "slug": {
                         "type": "string",
-                        "pattern": "^[a-z]+(?:-[a-z]+)*$"
+                        "pattern": "^[a-z]+(?:-[a-z]+)*$",
+                        "description": "A lowercase URL-safe slug."
                       },
                       "name": {
                         "type": "string",
-                        "pattern": ".+"
+                        "pattern": ".+",
+                        "description": "A non-empty string."
                       },
                       "tags": {
                         "type": "array",
@@ -993,11 +604,13 @@
                           "properties": {
                             "id": {
                               "type": "string",
-                              "format": "uuid"
+                              "format": "uuid",
+                              "description": "A UUID."
                             },
                             "name": {
                               "type": "string",
-                              "pattern": ".+"
+                              "pattern": ".+",
+                              "description": "A non-empty string."
                             }
                           }
                         }
@@ -1009,7 +622,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         }
                       }
                     }
@@ -1019,7 +633,7 @@
             }
           },
           "400": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: VALIDATION_ERROR.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1039,13 +653,14 @@
                       "type": "array",
                       "items": {}
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: VALIDATION_ERROR."
                 }
               }
             }
           },
           "401": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: UNAUTHORIZED.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1067,7 +682,8 @@
                         "Authentication required"
                       ]
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: UNAUTHORIZED."
                 }
               }
             }
@@ -1078,9 +694,11 @@
     "/api/recipes/{id}/favorite": {
       "patch": {
         "operationId": "favoriteRecipe",
+        "summary": "Favorite a recipe",
         "tags": [
           "Recipes"
         ],
+        "description": "Marks a recipe as favorited for the authenticated user and returns the updated recipe.",
         "parameters": [
           {
             "schema": {
@@ -1089,7 +707,8 @@
             },
             "in": "path",
             "name": "id",
-            "required": true
+            "required": true,
+            "description": "A UUID."
           }
         ],
         "responses": {
@@ -1115,15 +734,18 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "A UUID."
                     },
                     "slug": {
                       "type": "string",
-                      "pattern": "^[a-z]+(?:-[a-z]+)*$"
+                      "pattern": "^[a-z]+(?:-[a-z]+)*$",
+                      "description": "A lowercase URL-safe slug."
                     },
                     "name": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     },
                     "equipmentQuantities": {
                       "type": "array",
@@ -1138,11 +760,13 @@
                         "properties": {
                           "id": {
                             "type": "string",
-                            "format": "uuid"
+                            "format": "uuid",
+                            "description": "A UUID."
                           },
                           "position": {
                             "type": "integer",
-                            "minimum": 1
+                            "minimum": 1,
+                            "description": "An integer greater than zero."
                           },
                           "equipment": {
                             "type": "object",
@@ -1153,17 +777,20 @@
                             "properties": {
                               "id": {
                                 "type": "string",
-                                "format": "uuid"
+                                "format": "uuid",
+                                "description": "A UUID."
                               },
                               "name": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               }
                             }
                           },
                           "count": {
                             "type": "integer",
-                            "minimum": 1
+                            "minimum": 1,
+                            "description": "An integer greater than zero."
                           }
                         }
                       }
@@ -1182,11 +809,13 @@
                         "properties": {
                           "id": {
                             "type": "string",
-                            "format": "uuid"
+                            "format": "uuid",
+                            "description": "A UUID."
                           },
                           "position": {
                             "type": "integer",
-                            "minimum": 1
+                            "minimum": 1,
+                            "description": "An integer greater than zero."
                           },
                           "grocery": {
                             "type": "object",
@@ -1197,11 +826,13 @@
                             "properties": {
                               "id": {
                                 "type": "string",
-                                "format": "uuid"
+                                "format": "uuid",
+                                "description": "A UUID."
                               },
                               "name": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               }
                             }
                           },
@@ -1215,21 +846,25 @@
                             "properties": {
                               "id": {
                                 "type": "string",
-                                "format": "uuid"
+                                "format": "uuid",
+                                "description": "A UUID."
                               },
                               "name": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               },
                               "dimension": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               }
                             }
                           },
                           "amount": {
                             "type": "string",
-                            "pattern": ".+"
+                            "pattern": ".+",
+                            "description": "A quantity, such as 2 or 1/2."
                           }
                         }
                       }
@@ -1238,7 +873,8 @@
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "pattern": ".+"
+                        "pattern": ".+",
+                        "description": "A non-empty string."
                       }
                     },
                     "tags": {
@@ -1252,11 +888,13 @@
                         "properties": {
                           "id": {
                             "type": "string",
-                            "format": "uuid"
+                            "format": "uuid",
+                            "description": "A UUID."
                           },
                           "name": {
                             "type": "string",
-                            "pattern": ".+"
+                            "pattern": ".+",
+                            "description": "A non-empty string."
                           }
                         }
                       }
@@ -1268,12 +906,14 @@
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "pattern": ".+"
+                        "pattern": ".+",
+                        "description": "A non-empty string."
                       }
                     },
                     "timesCooked": {
                       "type": "integer",
-                      "minimum": 0
+                      "minimum": 0,
+                      "description": "An integer greater than or equal to zero."
                     },
                     "rating": {
                       "anyOf": [
@@ -1304,7 +944,7 @@
             }
           },
           "400": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: VALIDATION_ERROR.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1324,13 +964,14 @@
                       "type": "array",
                       "items": {}
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: VALIDATION_ERROR."
                 }
               }
             }
           },
           "401": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: UNAUTHORIZED.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1352,13 +993,14 @@
                         "Authentication required"
                       ]
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: UNAUTHORIZED."
                 }
               }
             }
           },
           "404": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: RESOURCE_NOT_FOUND.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1384,13 +1026,16 @@
                     },
                     "key": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     },
                     "value": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: RESOURCE_NOT_FOUND."
                 }
               }
             }
@@ -1401,9 +1046,11 @@
     "/api/recipes/{id}/unfavorite": {
       "patch": {
         "operationId": "unfavoriteRecipe",
+        "summary": "Unfavorite a recipe",
         "tags": [
           "Recipes"
         ],
+        "description": "Removes the authenticated user's favorite mark from a recipe and returns the updated recipe.",
         "parameters": [
           {
             "schema": {
@@ -1412,7 +1059,8 @@
             },
             "in": "path",
             "name": "id",
-            "required": true
+            "required": true,
+            "description": "A UUID."
           }
         ],
         "responses": {
@@ -1438,15 +1086,18 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "A UUID."
                     },
                     "slug": {
                       "type": "string",
-                      "pattern": "^[a-z]+(?:-[a-z]+)*$"
+                      "pattern": "^[a-z]+(?:-[a-z]+)*$",
+                      "description": "A lowercase URL-safe slug."
                     },
                     "name": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     },
                     "equipmentQuantities": {
                       "type": "array",
@@ -1461,11 +1112,13 @@
                         "properties": {
                           "id": {
                             "type": "string",
-                            "format": "uuid"
+                            "format": "uuid",
+                            "description": "A UUID."
                           },
                           "position": {
                             "type": "integer",
-                            "minimum": 1
+                            "minimum": 1,
+                            "description": "An integer greater than zero."
                           },
                           "equipment": {
                             "type": "object",
@@ -1476,17 +1129,20 @@
                             "properties": {
                               "id": {
                                 "type": "string",
-                                "format": "uuid"
+                                "format": "uuid",
+                                "description": "A UUID."
                               },
                               "name": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               }
                             }
                           },
                           "count": {
                             "type": "integer",
-                            "minimum": 1
+                            "minimum": 1,
+                            "description": "An integer greater than zero."
                           }
                         }
                       }
@@ -1505,11 +1161,13 @@
                         "properties": {
                           "id": {
                             "type": "string",
-                            "format": "uuid"
+                            "format": "uuid",
+                            "description": "A UUID."
                           },
                           "position": {
                             "type": "integer",
-                            "minimum": 1
+                            "minimum": 1,
+                            "description": "An integer greater than zero."
                           },
                           "grocery": {
                             "type": "object",
@@ -1520,11 +1178,13 @@
                             "properties": {
                               "id": {
                                 "type": "string",
-                                "format": "uuid"
+                                "format": "uuid",
+                                "description": "A UUID."
                               },
                               "name": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               }
                             }
                           },
@@ -1538,21 +1198,25 @@
                             "properties": {
                               "id": {
                                 "type": "string",
-                                "format": "uuid"
+                                "format": "uuid",
+                                "description": "A UUID."
                               },
                               "name": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               },
                               "dimension": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               }
                             }
                           },
                           "amount": {
                             "type": "string",
-                            "pattern": ".+"
+                            "pattern": ".+",
+                            "description": "A quantity, such as 2 or 1/2."
                           }
                         }
                       }
@@ -1561,7 +1225,8 @@
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "pattern": ".+"
+                        "pattern": ".+",
+                        "description": "A non-empty string."
                       }
                     },
                     "tags": {
@@ -1575,11 +1240,13 @@
                         "properties": {
                           "id": {
                             "type": "string",
-                            "format": "uuid"
+                            "format": "uuid",
+                            "description": "A UUID."
                           },
                           "name": {
                             "type": "string",
-                            "pattern": ".+"
+                            "pattern": ".+",
+                            "description": "A non-empty string."
                           }
                         }
                       }
@@ -1591,12 +1258,14 @@
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "pattern": ".+"
+                        "pattern": ".+",
+                        "description": "A non-empty string."
                       }
                     },
                     "timesCooked": {
                       "type": "integer",
-                      "minimum": 0
+                      "minimum": 0,
+                      "description": "An integer greater than or equal to zero."
                     },
                     "rating": {
                       "anyOf": [
@@ -1627,7 +1296,7 @@
             }
           },
           "400": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: VALIDATION_ERROR.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1647,13 +1316,14 @@
                       "type": "array",
                       "items": {}
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: VALIDATION_ERROR."
                 }
               }
             }
           },
           "401": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: UNAUTHORIZED.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1675,13 +1345,14 @@
                         "Authentication required"
                       ]
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: UNAUTHORIZED."
                 }
               }
             }
           },
           "404": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: RESOURCE_NOT_FOUND.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1707,13 +1378,16 @@
                     },
                     "key": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     },
                     "value": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: RESOURCE_NOT_FOUND."
                 }
               }
             }
@@ -1724,9 +1398,11 @@
     "/api/recipes/{id}/cooked": {
       "post": {
         "operationId": "recordCooked",
+        "summary": "Record a cooked recipe",
         "tags": [
           "Recipes"
         ],
+        "description": "Records that the authenticated user cooked a recipe with a thumbs-up or thumbs-down rating.",
         "requestBody": {
           "required": true,
           "content": {
@@ -1766,7 +1442,8 @@
             },
             "in": "path",
             "name": "id",
-            "required": true
+            "required": true,
+            "description": "A UUID."
           }
         ],
         "responses": {
@@ -1783,7 +1460,8 @@
                   "properties": {
                     "timesCooked": {
                       "type": "integer",
-                      "minimum": 1
+                      "minimum": 1,
+                      "description": "An integer greater than zero."
                     },
                     "rating": {
                       "anyOf": [
@@ -1807,7 +1485,7 @@
             }
           },
           "400": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: VALIDATION_ERROR.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1827,13 +1505,14 @@
                       "type": "array",
                       "items": {}
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: VALIDATION_ERROR."
                 }
               }
             }
           },
           "401": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: UNAUTHORIZED.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1855,13 +1534,14 @@
                         "Authentication required"
                       ]
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: UNAUTHORIZED."
                 }
               }
             }
           },
           "404": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: RESOURCE_NOT_FOUND.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1887,13 +1567,16 @@
                     },
                     "key": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     },
                     "value": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: RESOURCE_NOT_FOUND."
                 }
               }
             }
@@ -1904,9 +1587,11 @@
     "/api/recipes/recommendations": {
       "get": {
         "operationId": "findRecommendations",
+        "summary": "Get recipe recommendations",
         "tags": [
           "Recipes"
         ],
+        "description": "Returns personalized recipe recommendations for the authenticated user, ordered by recommendation rank.",
         "responses": {
           "200": {
             "description": "Default Response",
@@ -1939,15 +1624,18 @@
                         "properties": {
                           "id": {
                             "type": "string",
-                            "format": "uuid"
+                            "format": "uuid",
+                            "description": "A UUID."
                           },
                           "slug": {
                             "type": "string",
-                            "pattern": "^[a-z]+(?:-[a-z]+)*$"
+                            "pattern": "^[a-z]+(?:-[a-z]+)*$",
+                            "description": "A lowercase URL-safe slug."
                           },
                           "name": {
                             "type": "string",
-                            "pattern": ".+"
+                            "pattern": ".+",
+                            "description": "A non-empty string."
                           },
                           "tags": {
                             "type": "array",
@@ -1960,11 +1648,13 @@
                               "properties": {
                                 "id": {
                                   "type": "string",
-                                  "format": "uuid"
+                                  "format": "uuid",
+                                  "description": "A UUID."
                                 },
                                 "name": {
                                   "type": "string",
-                                  "pattern": ".+"
+                                  "pattern": ".+",
+                                  "description": "A non-empty string."
                                 }
                               }
                             }
@@ -1976,7 +1666,8 @@
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "pattern": ".+"
+                              "pattern": ".+",
+                              "description": "A non-empty string."
                             }
                           }
                         }
@@ -1988,7 +1679,7 @@
             }
           },
           "401": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: UNAUTHORIZED.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2010,7 +1701,8 @@
                         "Authentication required"
                       ]
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: UNAUTHORIZED."
                 }
               }
             }
@@ -2021,9 +1713,11 @@
     "/api/drafts/generate": {
       "post": {
         "operationId": "generateRecipeDraft",
+        "summary": "Generate a recipe draft",
         "tags": [
           "Drafts"
         ],
+        "description": "Generates a new recipe draft from an existing recipe or draft using an authenticated user's prompt.",
         "requestBody": {
           "required": true,
           "content": {
@@ -2054,11 +1748,13 @@
                   },
                   "id": {
                     "type": "string",
-                    "format": "uuid"
+                    "format": "uuid",
+                    "description": "A UUID."
                   },
                   "prompt": {
                     "type": "string",
-                    "pattern": ".+"
+                    "pattern": ".+",
+                    "description": "A non-empty string."
                   }
                 }
               }
@@ -2083,17 +1779,20 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "A UUID."
                     },
                     "lineageId": {
                       "type": "string",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "A UUID."
                     },
                     "sourceRecipeId": {
                       "anyOf": [
                         {
                           "type": "string",
-                          "format": "uuid"
+                          "format": "uuid",
+                          "description": "A UUID."
                         },
                         {
                           "type": "null"
@@ -2104,7 +1803,8 @@
                       "anyOf": [
                         {
                           "type": "string",
-                          "format": "uuid"
+                          "format": "uuid",
+                          "description": "A UUID."
                         },
                         {
                           "type": "null"
@@ -2115,7 +1815,8 @@
                       "anyOf": [
                         {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         },
                         {
                           "type": "null"
@@ -2134,13 +1835,15 @@
                       "properties": {
                         "name": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         },
                         "steps": {
                           "type": "array",
                           "items": {
                             "type": "string",
-                            "pattern": ".+"
+                            "pattern": ".+",
+                            "description": "A non-empty string."
                           }
                         },
                         "equipment": {
@@ -2154,11 +1857,13 @@
                             "properties": {
                               "count": {
                                 "type": "integer",
-                                "minimum": 1
+                                "minimum": 1,
+                                "description": "An integer greater than zero."
                               },
                               "itemName": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               }
                             }
                           }
@@ -2175,15 +1880,18 @@
                             "properties": {
                               "amount": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A quantity, such as 2 or 1/2."
                               },
                               "unit": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               },
                               "itemName": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               }
                             }
                           }
@@ -2192,7 +1900,8 @@
                           "type": "array",
                           "items": {
                             "type": "string",
-                            "pattern": ".+"
+                            "pattern": ".+",
+                            "description": "A non-empty string."
                           }
                         }
                       }
@@ -2203,7 +1912,7 @@
             }
           },
           "400": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: VALIDATION_ERROR.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2223,13 +1932,14 @@
                       "type": "array",
                       "items": {}
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: VALIDATION_ERROR."
                 }
               }
             }
           },
           "401": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: UNAUTHORIZED.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2251,7 +1961,8 @@
                         "Authentication required"
                       ]
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: UNAUTHORIZED."
                 }
               }
             }
@@ -2285,13 +1996,16 @@
                         },
                         "key": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         },
                         "value": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         }
-                      }
+                      },
+                      "description": "Dishcraft API error: RESOURCE_NOT_FOUND."
                     },
                     {
                       "type": "object",
@@ -2316,13 +2030,16 @@
                         },
                         "key": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         },
                         "value": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         }
-                      }
+                      },
+                      "description": "Dishcraft API error: RESOURCE_NOT_FOUND."
                     }
                   ]
                 }
@@ -2335,9 +2052,11 @@
     "/api/drafts/edit": {
       "post": {
         "operationId": "editRecipeDraft",
+        "summary": "Create an edited recipe draft",
         "tags": [
           "Drafts"
         ],
+        "description": "Creates a recipe draft from edited recipe content and its source lineage.",
         "requestBody": {
           "required": true,
           "content": {
@@ -2366,7 +2085,8 @@
                           },
                           "id": {
                             "type": "string",
-                            "format": "uuid"
+                            "format": "uuid",
+                            "description": "A UUID."
                           }
                         }
                       },
@@ -2385,7 +2105,8 @@
                           },
                           "id": {
                             "type": "string",
-                            "format": "uuid"
+                            "format": "uuid",
+                            "description": "A UUID."
                           }
                         }
                       },
@@ -2417,13 +2138,15 @@
                     "properties": {
                       "name": {
                         "type": "string",
-                        "pattern": ".+"
+                        "pattern": ".+",
+                        "description": "A non-empty string."
                       },
                       "steps": {
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         }
                       },
                       "equipment": {
@@ -2437,11 +2160,13 @@
                           "properties": {
                             "count": {
                               "type": "integer",
-                              "minimum": 1
+                              "minimum": 1,
+                              "description": "An integer greater than zero."
                             },
                             "itemName": {
                               "type": "string",
-                              "pattern": ".+"
+                              "pattern": ".+",
+                              "description": "A non-empty string."
                             }
                           }
                         }
@@ -2458,15 +2183,18 @@
                           "properties": {
                             "amount": {
                               "type": "string",
-                              "pattern": ".+"
+                              "pattern": ".+",
+                              "description": "A quantity, such as 2 or 1/2."
                             },
                             "unit": {
                               "type": "string",
-                              "pattern": ".+"
+                              "pattern": ".+",
+                              "description": "A non-empty string."
                             },
                             "itemName": {
                               "type": "string",
-                              "pattern": ".+"
+                              "pattern": ".+",
+                              "description": "A non-empty string."
                             }
                           }
                         }
@@ -2475,7 +2203,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         }
                       }
                     }
@@ -2503,17 +2232,20 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "A UUID."
                     },
                     "lineageId": {
                       "type": "string",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "A UUID."
                     },
                     "sourceRecipeId": {
                       "anyOf": [
                         {
                           "type": "string",
-                          "format": "uuid"
+                          "format": "uuid",
+                          "description": "A UUID."
                         },
                         {
                           "type": "null"
@@ -2524,7 +2256,8 @@
                       "anyOf": [
                         {
                           "type": "string",
-                          "format": "uuid"
+                          "format": "uuid",
+                          "description": "A UUID."
                         },
                         {
                           "type": "null"
@@ -2535,7 +2268,8 @@
                       "anyOf": [
                         {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         },
                         {
                           "type": "null"
@@ -2554,13 +2288,15 @@
                       "properties": {
                         "name": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         },
                         "steps": {
                           "type": "array",
                           "items": {
                             "type": "string",
-                            "pattern": ".+"
+                            "pattern": ".+",
+                            "description": "A non-empty string."
                           }
                         },
                         "equipment": {
@@ -2574,11 +2310,13 @@
                             "properties": {
                               "count": {
                                 "type": "integer",
-                                "minimum": 1
+                                "minimum": 1,
+                                "description": "An integer greater than zero."
                               },
                               "itemName": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               }
                             }
                           }
@@ -2595,15 +2333,18 @@
                             "properties": {
                               "amount": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A quantity, such as 2 or 1/2."
                               },
                               "unit": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               },
                               "itemName": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               }
                             }
                           }
@@ -2612,7 +2353,8 @@
                           "type": "array",
                           "items": {
                             "type": "string",
-                            "pattern": ".+"
+                            "pattern": ".+",
+                            "description": "A non-empty string."
                           }
                         }
                       }
@@ -2623,7 +2365,7 @@
             }
           },
           "400": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: VALIDATION_ERROR.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2643,13 +2385,14 @@
                       "type": "array",
                       "items": {}
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: VALIDATION_ERROR."
                 }
               }
             }
           },
           "401": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: UNAUTHORIZED.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2671,7 +2414,8 @@
                         "Authentication required"
                       ]
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: UNAUTHORIZED."
                 }
               }
             }
@@ -2705,13 +2449,16 @@
                         },
                         "key": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         },
                         "value": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         }
-                      }
+                      },
+                      "description": "Dishcraft API error: RESOURCE_NOT_FOUND."
                     },
                     {
                       "type": "object",
@@ -2736,13 +2483,16 @@
                         },
                         "key": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         },
                         "value": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         }
-                      }
+                      },
+                      "description": "Dishcraft API error: RESOURCE_NOT_FOUND."
                     }
                   ]
                 }
@@ -2755,9 +2505,11 @@
     "/api/drafts/{draftId}": {
       "post": {
         "operationId": "normalizeRecipeDraft",
+        "summary": "Promote a recipe draft",
         "tags": [
           "Drafts"
         ],
+        "description": "Normalizes an authenticated user's recipe draft into a recipe and returns the created recipe.",
         "parameters": [
           {
             "schema": {
@@ -2766,7 +2518,8 @@
             },
             "in": "path",
             "name": "draftId",
-            "required": true
+            "required": true,
+            "description": "A UUID."
           }
         ],
         "responses": {
@@ -2792,15 +2545,18 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "A UUID."
                     },
                     "slug": {
                       "type": "string",
-                      "pattern": "^[a-z]+(?:-[a-z]+)*$"
+                      "pattern": "^[a-z]+(?:-[a-z]+)*$",
+                      "description": "A lowercase URL-safe slug."
                     },
                     "name": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     },
                     "equipmentQuantities": {
                       "type": "array",
@@ -2815,11 +2571,13 @@
                         "properties": {
                           "id": {
                             "type": "string",
-                            "format": "uuid"
+                            "format": "uuid",
+                            "description": "A UUID."
                           },
                           "position": {
                             "type": "integer",
-                            "minimum": 1
+                            "minimum": 1,
+                            "description": "An integer greater than zero."
                           },
                           "equipment": {
                             "type": "object",
@@ -2830,17 +2588,20 @@
                             "properties": {
                               "id": {
                                 "type": "string",
-                                "format": "uuid"
+                                "format": "uuid",
+                                "description": "A UUID."
                               },
                               "name": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               }
                             }
                           },
                           "count": {
                             "type": "integer",
-                            "minimum": 1
+                            "minimum": 1,
+                            "description": "An integer greater than zero."
                           }
                         }
                       }
@@ -2859,11 +2620,13 @@
                         "properties": {
                           "id": {
                             "type": "string",
-                            "format": "uuid"
+                            "format": "uuid",
+                            "description": "A UUID."
                           },
                           "position": {
                             "type": "integer",
-                            "minimum": 1
+                            "minimum": 1,
+                            "description": "An integer greater than zero."
                           },
                           "grocery": {
                             "type": "object",
@@ -2874,11 +2637,13 @@
                             "properties": {
                               "id": {
                                 "type": "string",
-                                "format": "uuid"
+                                "format": "uuid",
+                                "description": "A UUID."
                               },
                               "name": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               }
                             }
                           },
@@ -2892,21 +2657,25 @@
                             "properties": {
                               "id": {
                                 "type": "string",
-                                "format": "uuid"
+                                "format": "uuid",
+                                "description": "A UUID."
                               },
                               "name": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               },
                               "dimension": {
                                 "type": "string",
-                                "pattern": ".+"
+                                "pattern": ".+",
+                                "description": "A non-empty string."
                               }
                             }
                           },
                           "amount": {
                             "type": "string",
-                            "pattern": ".+"
+                            "pattern": ".+",
+                            "description": "A quantity, such as 2 or 1/2."
                           }
                         }
                       }
@@ -2915,7 +2684,8 @@
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "pattern": ".+"
+                        "pattern": ".+",
+                        "description": "A non-empty string."
                       }
                     },
                     "tags": {
@@ -2929,11 +2699,13 @@
                         "properties": {
                           "id": {
                             "type": "string",
-                            "format": "uuid"
+                            "format": "uuid",
+                            "description": "A UUID."
                           },
                           "name": {
                             "type": "string",
-                            "pattern": ".+"
+                            "pattern": ".+",
+                            "description": "A non-empty string."
                           }
                         }
                       }
@@ -2945,12 +2717,14 @@
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "pattern": ".+"
+                        "pattern": ".+",
+                        "description": "A non-empty string."
                       }
                     },
                     "timesCooked": {
                       "type": "integer",
-                      "minimum": 0
+                      "minimum": 0,
+                      "description": "An integer greater than or equal to zero."
                     },
                     "rating": {
                       "anyOf": [
@@ -2981,7 +2755,7 @@
             }
           },
           "400": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: VALIDATION_ERROR.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3001,13 +2775,14 @@
                       "type": "array",
                       "items": {}
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: VALIDATION_ERROR."
                 }
               }
             }
           },
           "401": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: UNAUTHORIZED.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3029,7 +2804,8 @@
                         "Authentication required"
                       ]
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: UNAUTHORIZED."
                 }
               }
             }
@@ -3063,13 +2839,16 @@
                         },
                         "key": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         },
                         "value": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         }
-                      }
+                      },
+                      "description": "Dishcraft API error: RESOURCE_NOT_FOUND."
                     },
                     {
                       "type": "object",
@@ -3094,13 +2873,16 @@
                         },
                         "key": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         },
                         "value": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         }
-                      }
+                      },
+                      "description": "Dishcraft API error: RESOURCE_NOT_FOUND."
                     }
                   ]
                 }
@@ -3113,9 +2895,11 @@
     "/api/me": {
       "get": {
         "operationId": "getMe",
+        "summary": "Get the current user",
         "tags": [
           "Users"
         ],
+        "description": "Returns the profile and administrative status of the authenticated user.",
         "responses": {
           "200": {
             "description": "Default Response",
@@ -3132,15 +2916,18 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "A UUID."
                     },
                     "name": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     },
                     "email": {
                       "type": "string",
-                      "format": "email"
+                      "format": "email",
+                      "description": "An email address."
                     },
                     "isAdmin": {
                       "type": "boolean"
@@ -3151,7 +2938,7 @@
             }
           },
           "401": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: UNAUTHORIZED.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3173,13 +2960,14 @@
                         "Authentication required"
                       ]
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: UNAUTHORIZED."
                 }
               }
             }
           },
           "404": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: RESOURCE_NOT_FOUND.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3205,13 +2993,16 @@
                     },
                     "key": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     },
                     "value": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: RESOURCE_NOT_FOUND."
                 }
               }
             }
@@ -3222,9 +3013,11 @@
     "/api/admin/users": {
       "get": {
         "operationId": "getUsers",
+        "summary": "List users",
         "tags": [
           "Admin"
         ],
+        "description": "Returns users and their tag affinities for an authenticated administrator.",
         "responses": {
           "200": {
             "description": "Default Response",
@@ -3244,15 +3037,18 @@
                     "properties": {
                       "id": {
                         "type": "string",
-                        "format": "uuid"
+                        "format": "uuid",
+                        "description": "A UUID."
                       },
                       "name": {
                         "type": "string",
-                        "pattern": ".+"
+                        "pattern": ".+",
+                        "description": "A non-empty string."
                       },
                       "email": {
                         "type": "string",
-                        "format": "email"
+                        "format": "email",
+                        "description": "An email address."
                       },
                       "isAdmin": {
                         "type": "boolean"
@@ -3268,7 +3064,8 @@
                           "properties": {
                             "value": {
                               "type": "string",
-                              "pattern": ".+"
+                              "pattern": ".+",
+                              "description": "A non-empty string."
                             },
                             "affinity": {
                               "anyOf": [
@@ -3302,7 +3099,7 @@
             }
           },
           "401": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: UNAUTHORIZED.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3324,13 +3121,14 @@
                         "Authentication required"
                       ]
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: UNAUTHORIZED."
                 }
               }
             }
           },
           "403": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: FORBIDDEN.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3348,9 +3146,11 @@
                     },
                     "userId": {
                       "type": "string",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "A UUID."
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: FORBIDDEN."
                 }
               }
             }
@@ -3361,9 +3161,11 @@
     "/api/admin/impersonation": {
       "post": {
         "operationId": "startImpersonation",
+        "summary": "Start an impersonation session",
         "tags": [
           "Admin"
         ],
+        "description": "Starts an administrator impersonation session for a target user.",
         "requestBody": {
           "required": true,
           "content": {
@@ -3376,7 +3178,8 @@
                 "properties": {
                   "userId": {
                     "type": "string",
-                    "format": "uuid"
+                    "format": "uuid",
+                    "description": "A UUID."
                   }
                 }
               }
@@ -3398,7 +3201,8 @@
                   "properties": {
                     "sessionId": {
                       "type": "string",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "A UUID."
                     },
                     "targetUser": {
                       "type": "object",
@@ -3411,15 +3215,18 @@
                       "properties": {
                         "id": {
                           "type": "string",
-                          "format": "uuid"
+                          "format": "uuid",
+                          "description": "A UUID."
                         },
                         "name": {
                           "type": "string",
-                          "pattern": ".+"
+                          "pattern": ".+",
+                          "description": "A non-empty string."
                         },
                         "email": {
                           "type": "string",
-                          "format": "email"
+                          "format": "email",
+                          "description": "An email address."
                         },
                         "isAdmin": {
                           "type": "boolean"
@@ -3436,7 +3243,7 @@
             }
           },
           "400": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: VALIDATION_ERROR.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3456,13 +3263,14 @@
                       "type": "array",
                       "items": {}
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: VALIDATION_ERROR."
                 }
               }
             }
           },
           "401": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: UNAUTHORIZED.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3484,13 +3292,14 @@
                         "Authentication required"
                       ]
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: UNAUTHORIZED."
                 }
               }
             }
           },
           "403": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: FORBIDDEN.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3508,15 +3317,17 @@
                     },
                     "userId": {
                       "type": "string",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "A UUID."
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: FORBIDDEN."
                 }
               }
             }
           },
           "404": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: RESOURCE_NOT_FOUND.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3542,13 +3353,16 @@
                     },
                     "key": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     },
                     "value": {
                       "type": "string",
-                      "pattern": ".+"
+                      "pattern": ".+",
+                      "description": "A non-empty string."
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: RESOURCE_NOT_FOUND."
                 }
               }
             }
@@ -3559,9 +3373,11 @@
     "/api/admin/impersonation/end": {
       "post": {
         "operationId": "endImpersonation",
+        "summary": "End an impersonation session",
         "tags": [
           "Admin"
         ],
+        "description": "Ends the authenticated administrator's active impersonation session.",
         "responses": {
           "200": {
             "description": "Default Response",
@@ -3585,7 +3401,7 @@
             }
           },
           "400": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: VALIDATION_ERROR.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3605,13 +3421,14 @@
                       "type": "array",
                       "items": {}
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: VALIDATION_ERROR."
                 }
               }
             }
           },
           "401": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: UNAUTHORIZED.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3633,13 +3450,14 @@
                         "Authentication required"
                       ]
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: UNAUTHORIZED."
                 }
               }
             }
           },
           "403": {
-            "description": "Default Response",
+            "description": "Dishcraft API error: FORBIDDEN.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3657,9 +3475,11 @@
                     },
                     "userId": {
                       "type": "string",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "A UUID."
                     }
-                  }
+                  },
+                  "description": "Dishcraft API error: FORBIDDEN."
                 }
               }
             }

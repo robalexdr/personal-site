@@ -150,7 +150,7 @@ All three routes require authentication. There is currently no public `GET` draf
 
 ## Why this separation is useful
 
-This design gives Dishcraft a durable record of the creative path without forcing every intermediate experiment into the main recipe catalog.
+This gives Dishcraft a durable record of the creative path without putting every intermediate experiment into the main recipe catalog.
 
 It preserves useful provenance:
 
@@ -161,4 +161,4 @@ It preserves useful provenance:
 
 At the same time, the normalized recipe remains clean and operational. Once a draft crosses the normalization boundary, it can participate in the application's relational features without losing the history that explains where it came from.
 
-The result is a simple mental model: drafts are versions in a user's working history, lineages are the threads that connect those versions, and normalization is the explicit moment when one version becomes a recipe.
+In practice, drafts are versions in a user's working history, lineages connect those versions, and normalization is the explicit moment when one version becomes a recipe.
